@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d8a308d_4fd852cb",
+        "filename": "Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1215
+      },
+      "writtenOn": "2021-11-30T08:35:22Z",
+      "side": 1,
+      "message": "you could have used the ONAP python baseline image...no? BTW we probably shall release a new one for Jakarta...",
+      "revId": "7d73f991aa77edceac2e8bfe3ea52ea83e37eae7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc5c98e5_da85a674",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1215
+      },
+      "writtenOn": "2021-11-30T08:35:22Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "7d73f991aa77edceac2e8bfe3ea52ea83e37eae7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acc627c4_ad03b4f3",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1215
+      },
+      "writtenOn": "2021-11-30T08:35:22Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "7d73f991aa77edceac2e8bfe3ea52ea83e37eae7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b210112_c277f799",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1215
+      },
+      "writtenOn": "2021-11-30T08:35:22Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "7d73f991aa77edceac2e8bfe3ea52ea83e37eae7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
