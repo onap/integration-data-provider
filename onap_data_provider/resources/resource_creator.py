@@ -1,0 +1,177 @@
+"""Resource creator module."""
+from __future__ import annotations
+
+"""
+   Copyright 2021 Deutsche Telekom AG
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+"""
+
+from onap_data_provider.resources.platform_resource import PlatformResource
+import typing
+from abc import ABC
+
+from .aai_service_resource import AaiServiceResource
+from .cloud_region_resource import CloudRegionResource
+from .complex_resource import ComplexResource
+from .customer_resource import CustomerResource
+from .line_of_business_resource import LineOfBusinessResource
+from .msb_k8s_definition import MsbK8SDefinitionResource
+from .owning_entity_resource import OwningEntityResource
+from .pnf_resource import PnfResource
+from .project_resource import ProjectResource
+from .service_resource import ServiceResource
+from .service_instance_resource import (
+    ServiceInstanceResource,
+    ServiceInstanceResource_1_1,
+)
+from .vendor_resource import VendorResource
+from .vnf_resource import VnfResource
+from .vsp_resource import VspResource
+from ..versions import VersionsEnum
+
+if typing.TYPE_CHECKING:
+    from .resource import Resource
+
+
+class ResourceCreator(ABC):
+    """Resource creator.
+
+    Provides a method to create `Resource` instances.
+    """
+
+    RESOURCES_TYPES_DICT: typing.Mapping[
+        str, typing.Mapping[VersionsEnum, typing.Type[Resource]]
+    ] = {
+        "aai-service": {
+            VersionsEnum.NONE: AaiServiceResource,
+            VersionsEnum.V1_0: AaiServiceResource,
+            VersionsEnum.V1_1: AaiServiceResource,
+        },
+        "cloud-region": {
+            VersionsEnum.NONE: CloudRegionResource,
+            VersionsEnum.V1_0: CloudRegionResource,
+            VersionsEnum.V1_1: CloudRegionResource,
+        },
+        "complex": {
+            VersionsEnum.NONE: ComplexResource,
+            VersionsEnum.V1_0: ComplexResource,
+            VersionsEnum.V1_1: ComplexResource,
+        },
+        "customer": {
+            VersionsEnum.NONE: CustomerResource,
+            VersionsEnum.V1_0: CustomerResource,
+            VersionsEnum.V1_1: CustomerResource,
+        },
+        "vsp": {
+            VersionsEnum.NONE: VspResource,
+            VersionsEnum.V1_0: VspResource,
+            VersionsEnum.V1_1: VspResource,
+        },
+        "service": {
+            VersionsEnum.NONE: ServiceResource,
+            VersionsEnum.V1_0: ServiceResource,
+            VersionsEnum.V1_1: ServiceResource,
+        },
+        "vendor": {
+            VersionsEnum.NONE: VendorResource,
+            VersionsEnum.V1_0: VendorResource,
+            VersionsEnum.V1_1: VendorResource,
+        },
+        "pnf": {
+            VersionsEnum.NONE: PnfResource,
+            VersionsEnum.V1_0: PnfResource,
+            VersionsEnum.V1_1: PnfResource,
+        },
+        "vnf": {
+            VersionsEnum.NONE: VnfResource,
+            VersionsEnum.V1_0: VnfResource,
+            VersionsEnum.V1_1: VnfResource,
+        },
+        "service-instance": {
+            VersionsEnum.NONE: ServiceInstanceResource,
+            VersionsEnum.V1_0: ServiceInstanceResource,
+            VersionsEnum.V1_1: ServiceInstanceResource_1_1,
+        },
+        "line-of-business": {
+            VersionsEnum.NONE: LineOfBusinessResource,
+            VersionsEnum.V1_0: LineOfBusinessResource,
+            VersionsEnum.V1_1: LineOfBusinessResource,
+        },
+        "project": {
+            VersionsEnum.NONE: ProjectResource,
+            VersionsEnum.V1_0: ProjectResource,
+            VersionsEnum.V1_1: ProjectResource,
+        },
+        "platform": {
+            VersionsEnum.NONE: PlatformResource,
+            VersionsEnum.V1_0: PlatformResource,
+            VersionsEnum.V1_1: PlatformResource,
+        },
+        "owning-entity": {
+            VersionsEnum.NONE: OwningEntityResource,
+            VersionsEnum.V1_0: OwningEntityResource,
+            VersionsEnum.V1_1: OwningEntityResource,
+        },
+        "msb-k8s-definition": {
+            VersionsEnum.NONE: MsbK8SDefinitionResource,
+            VersionsEnum.V1_0: MsbK8SDefinitionResource,
+            VersionsEnum.V1_1: MsbK8SDefinitionResource,
+        },
+    }
+
+    @classmethod
+    def create(
+        cls,
+        resource_type: str,
+        data: typing.Dict[str, typing.Any],
+        version: VersionsEnum,
+    ) -> Resource:
+        """Resources factory method.
+
+        Based on provided `resource_type` creates `Resource` subclass.
+
+        Supported `resource_type` values:
+         - aai-service: AaiServiceResource
+         - cloud-region: CloudRegionResource
+         - complex: ComplexResource
+         - customer: CustomerResource
+         - vsp: VspResource
+         - service: ServiceResource
+         - vendor: VendorResource
+         - pnf: PnfResource
+         - vnf: VnfResource
+         - service-instance: ServiceInstanceResource
+         - line-of-business: LineOfBusinessResource
+         - project: ProjectResource
+         - platform: PlatformResource
+         - owning-entity: OwningEntityResource
+         - msb-k8s-definition: MsbK8SDefinitionResource
+
+        Args:
+            resource_type (str): Resource type to create
+            data (typing.Dict[str, typing.Any]): Resource data
+
+        Raises:
+            ValueError: Not support `resource_type` value provided.
+
+        Returns:
+            Resource: Created `Resource` subclass instance.
+
+        """
+        try:
+            return cls.RESOURCES_TYPES_DICT[resource_type][version](data)
+        except KeyError as key_error:
+            raise ValueError(
+                "Invalid resource type provided: %d", resource_type
+            ) from key_error

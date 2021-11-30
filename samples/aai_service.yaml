@@ -1,0 +1,9 @@
+# A&AI service sample
+# Creates one A&AI service model resource
+#
+odpSchemaVersion: 1.0
+resources:
+  aai-services:
+    - aai-service:
+        service-id: test_aai_service
+        service-description: test_aai_service
