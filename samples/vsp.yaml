@@ -1,0 +1,25 @@
+# VSP sample
+# Using that file you will create:
+#  - one SDC Vendor resource with "sample-vendor" name
+#  - two SDC VSPs:
+#      * one with "sample-vsp-anchor" name, where we use YAML's anchor to share vendor name between two resource,
+#      * onw with "sample-vsp-no-anchor" name where we just simply copy&paste the name of the vendor we want to use.
+#    It will also use "ubuntu.zip" package as an VSP artifact.
+#    Remember: package value is a path, it has to point to the file from the `onap-data-provider` runner perspective.
+#    I recommend to use absulute path to be sure there will be no errors.
+#
+odpSchemaVersion: 1.0
+resources:
+  vendors:
+    - vendor:
+        name: &vendor sample-vendor
+
+  vsps:
+    - vsp:
+        name: sample-vsp-anchor
+        vendor: *vendor
+        package: ubuntu.zip
+    - vsp:
+        name: sample-vsp-no-anchor
+        vendor: sample-vendor
+        package: ubuntu.zip

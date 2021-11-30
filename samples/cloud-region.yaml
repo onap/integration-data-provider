@@ -1,0 +1,27 @@
+# Cloud region sample
+# Cloud region resource is one of the biggest to describe (if you want to configure it with OpenStack)
+# Please fill the data based on your OpenStack instance RC v3 file (ask OpenStack admin).
+#
+odpSchemaVersion: 1.0
+resources:
+  cloud-regions:
+    - cloud-region:
+        cloud-owner: sample-cloud-owner
+        cloud-region-id: RegionOne
+        orchestration-disabled: false
+        in-maint: false
+        complex:
+          physical-location-id: sample-complex # Make sure it exists!
+        register-to-multicloud: true
+        availability-zones:
+          - cloud-owner: sample-cloud-owner
+            availability-zone-name: sample-availbility-zone
+            hypervisor-type: nova
+        esr-system-infos: # Take these information from openstack config file
+          - esr-system-info-id: 5433b0ac-594d-41f7-911d-dfe413e1cb2c # Has to be unique
+            user-name: username
+            password: password
+            system-type: VIM
+            service-url: http://127.0.0.1:5000/v3
+            cloud-domain: Default
+            default-tenant: default-tenant
