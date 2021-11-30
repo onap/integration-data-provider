@@ -1,0 +1,14 @@
+# Customer sample
+# Creates a customer with one service subscribed - sample-service. It's not required to create customer
+# with service subscription, but it's useful if you want to use that customer later for service
+# instantiation.
+# Service type has to be the name of the SDC service!
+odpSchemaVersion: 1.0
+resources:
+  customers:
+    - customer:
+        global-customer-id: sample-customer
+        subscriber-name: sample-customer
+        subscriber-type: Customer
+        service-subscriptions:
+          - service-type: sample-service # Make sure it exists!

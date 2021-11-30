@@ -1,0 +1,8 @@
+# Complex sample
+# Creates one complex with `sample-complex` physical location id
+#
+odpSchemaVersion: 1.0
+resources:
+  complexes:
+    - complex:
+        physical-location-id: sample-complex
