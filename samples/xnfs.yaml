@@ -1,0 +1,35 @@
+# VNFs and PNFs sample.
+# In that sample we don't create any additional resources - just xNFs. Make
+# sure that VSP you want to use already exists or use sample from `vsp.yaml`
+# file and create it.
+# It will also use "BASIC_VM_enriched.zip" package as an xNF artifact.
+# Remember: package value is a path, it has to point to the file from the `onap-data-provider` runner perspective.
+# I recommend to use absulute path to be sure there will be no errors.
+
+odpSchemaVersion: 1.0
+resources:
+  vnfs:
+    - vnf:
+        name: sample-vnf-without-artifact
+        vsp: sample-vsp # Make sure it exists!
+    - vnf:
+        name: sample-vnf-with-artifact
+        vsp: sample-vsp # Make sure it exists!
+        deployment_artifact:
+          artifact_type: CONTROLLER_BLUEPRINT_ARCHIVE
+          artifact_name: BASIC_VM_enriched.zip
+          artifact_label: vfwcds
+          artifact_file_name: BASIC_VM_enriched.zip
+
+  pnfs:
+    - pnf:
+        name: sample-pnf-without-artifact
+        vsp: sample-vsp # Make sure it exists!
+    - pnf:
+        name: sample-pnf-with-artifact
+        vsp: sample-vsp # Make sure it exists!
+        deployment_artifact:
+          artifact_type: CONTROLLER_BLUEPRINT_ARCHIVE
+          artifact_name: BASIC_VM_enriched.zip
+          artifact_label: vfwcds
+          artifact_file_name: BASIC_VM_enriched.zip

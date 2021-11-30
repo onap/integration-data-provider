@@ -1,0 +1,52 @@
+# Service sample
+# Using that file you will create SDC Services both with custom properties and not.
+# * sample-service-with-vf is a simple service with VF resource
+# * sample-service-with-vf-and-properties is a service with VF resource and
+#   it's properties - it's ready to create service instance using Macro flow
+# * sample-service-with-pnf is a simple service with PNF resource
+# * sample-service-with-pnf-and-properties is a service with PNF resource and
+#   it's properties - it's ready to create service instance using Macro flow
+# * sample-service-with-vl is a simple service with VL resource
+# Make sure that resources you want to use are already created. If not - use `xnfs.yaml`
+# sample file and create needed xNFs.
+#
+odpSchemaVersion: 1.0
+resources:
+  services:
+    - service:
+        name: sample-service-with-vf
+        resources:
+          - name: sample-vnf # Make sure it exists!
+            type: VF
+    - service:
+        name: sample-service-with-vf-and-properties
+        resources:
+          - name: sample-vnf # Make sure it exists!
+            type: VF
+            properties:
+              controller_actor: "CDS"
+              skip_post_instantiation_configuration: False
+              sdnc_artifact_name: "vnf"
+              sdnc_model_version: "1.0.0"
+              sdnc_model_name: "ubuntu20"
+    - service:
+        name: sample-service-with-pnf
+        resources:
+          - name: sample-pnf # Make sure it exists!
+            type: PNF
+    - service:
+        name: sample-service-with-pnf-and-properties
+        resources:
+          - name: sample-pnf # Make sure it exists!
+            type: PNF
+            properties:
+              controller_actor: "CDS"
+              skip_post_instantiation_configuration: False
+              sdnc_artifact_name: "vnf"
+              sdnc_model_version: "1.0.0"
+              sdnc_model_name: "ubuntu20"
+    - service:
+        name: sample-service-with-vl
+        resources:
+          - name: sample-vl # Make sure it exists!
+            type: VL

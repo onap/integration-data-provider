@@ -1,0 +1,11 @@
+odpSchemaVersion: 1.0
+resources:
+  msb-k8s-definitions:
+    - name: test
+      version: test
+      artifact: definition.tar.gz
+      profiles:
+        - name: test
+          namespace: test
+          k8s-version: "1.19"
+          artifact: profile.tar.gz

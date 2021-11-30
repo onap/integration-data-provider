@@ -1,0 +1,47 @@
+---
+complexes:
+- complex:
+    data-center-code: AMICPL1
+    complex-name: AMIST-COMPLEX-1
+    physical-location-id: &complex_id AMIST-COMPLEX-1
+    physical-location-type: Office
+    street1: '505'
+    street2: Terry Fox Drive
+    city: Kanata
+    state: Ontario
+    postal-code: A1A1A1
+    region: Eastern
+    country: Canada
+
+cloud-regions:
+- cloud-region:
+    cloud-owner: &clown AMIST
+    cloud-region-id: AMCR1
+    cloud-region-version: '11.0'
+    orchestration-disabled: true
+    in-maint: false
+    complex:
+      physical-location-id: *complex_id
+    tenants:
+      - tenant-id: !join ['-', [*clown, 'TENANT', 1]]
+        tenant-name: AMIST-TENANT-1-NAME
+      - tenant-id: !join [*clown, '-', 'TENANT', '-', 2]
+        tenant-name: AMIST-TENANT-2-NAME
+    availability-zones:
+      - cloud-owner: *clown
+        availability-zone-name: AMIST-AZ-1
+        hypervisor-type: OpenStackAmd
+
+customers:
+- customer:
+    global-customer-id: AMIST-CUST-11
+    subscriber-name: AAIIST-TESTER-11
+    subscriber-type: Customer
+    service-subscriptions:
+      - service-type: amist-voip
+- customer:
+    global-customer-id: AMIST-CUST-12
+    subscriber-name: AAIIST-TESTER-12
+    subscriber-type: Customer
+    service-subscriptions:
+      - service-type: amist-voip
