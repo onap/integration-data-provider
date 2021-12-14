@@ -1,0 +1,14 @@
+@startuml
+
+left to right direction
+
+agent "YAML entities file" as yaml_file
+agent "Data provider" as data_provider
+agent "ONAP PYTHON SDK" as onapsdk
+agent "ONAP" as onap
+
+yaml_file --> data_provider
+data_provider --> onapsdk
+onapsdk --> onap
+
+@enduml
