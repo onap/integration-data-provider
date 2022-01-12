@@ -16,6 +16,7 @@
 """
 import yaml
 import uuid
+from typing import Any
 
 
 def join(loader: yaml.SafeLoader, node: yaml.Node) -> str:
@@ -39,7 +40,7 @@ def join(loader: yaml.SafeLoader, node: yaml.Node) -> str:
         return "".join([str(i) for i in seq])
 
 
-def generate_random_uuid(*_) -> str:
+def generate_random_uuid(*_: Any) -> str:
     """Random UUID generator.
 
     Args:
