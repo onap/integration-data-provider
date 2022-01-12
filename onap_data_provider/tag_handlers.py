@@ -39,7 +39,7 @@ def join(loader: yaml.SafeLoader, node: yaml.Node) -> str:
         return "".join([str(i) for i in seq])
 
 
-def generate_random_uuid(*_) -> str:
+def generate_random_uuid(*_) -> str: # type: ignore
     """Random UUID generator.
 
     Args:
