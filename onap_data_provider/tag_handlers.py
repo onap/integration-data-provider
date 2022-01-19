@@ -14,9 +14,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 """
-import yaml
 import uuid
 from typing import Any
+
+import yaml
 
 
 def join(loader: yaml.SafeLoader, node: yaml.Node) -> str:

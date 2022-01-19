@@ -65,6 +65,21 @@ INSTANTIATION_PARAMETERS_DATA = {
     ]
 }
 
+PNF_VNF_INSTANTIATION_PARAMETERS_DATA = {
+    "service_name": "service1",
+    "service_subscripion_type": "ss_1",
+    "instantiation_parameters": [
+        {
+            "vnf_name": "test_vnf",
+            "parameters": {"a": "b", "c": "d"}
+        },
+        {
+            "pnf_name": "test_pnf",
+            "instance_name": "test_pnf_instance"
+        }
+    ]
+}
+
 
 @patch(
     "onap_data_provider.resources.service_instance_resource.ServiceInstanceResource.service_instance",
@@ -139,3 +154,21 @@ def test_service_instance_resource_version_1_0_and_1_1(mock_aai_service_get_all)
     si_resource_1_0 = ServiceInstanceResource(RESOURCE_DATA_1_1)
     assert si_resource_1_0.aai_service is not None
     mock_aai_service_get_all.assert_called_once()
+
+
+@patch("onap_data_provider.resources.service_instance_resource.ServiceInstanceResource.service_subscription", new_callable=PropertyMock)
+def test_test_service_instance_resource_vnf_and_pnf_instantiation(mock_service_subscription):
+    si_resource = ServiceInstanceResource(PNF_VNF_INSTANTIATION_PARAMETERS_DATA)
+
+    so_service = si_resource.so_service
+    assert len(so_service.vnfs) == 1
+    assert len(so_service.pnfs) == 1
+
+    vnf = so_service.vnfs[0]
+    assert vnf.instance_name == "test_vnf"
+    assert vnf.model_name == "test_vnf"
+    assert vnf.parameters == {"a": "b", "c": "d"}
+
+    pnf = so_service.pnfs[0]
+    assert pnf.instance_name == "test_pnf_instance"
+    assert pnf.model_name == "test_pnf"

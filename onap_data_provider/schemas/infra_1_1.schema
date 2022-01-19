@@ -429,14 +429,11 @@ properties:
               required:
                 - service_instance_name
                 - service_name
-                - cloud_region
                 - customer_id
                 - owning_entity
                 - project
                 - platform
                 - line_of_business
-                - cloud_region_id
-                - cloud_owner
                 - aai_service
   owning-entities:
     type: array
