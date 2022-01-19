@@ -15,7 +15,7 @@
    limitations under the License.
 """
 import logging
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from onapsdk.aai.cloud_infrastructure import CloudRegion, Tenant  # type: ignore
 from onapsdk.aai.business import Customer, OwningEntity  # type: ignore
@@ -27,6 +27,9 @@ from onapsdk.aai.business import ServiceInstance
 from onapsdk.so.instantiation import (  # type: ignore
     ServiceInstantiation,
     SoService,
+    SoServicePnf,
+    SoServiceVfModule,
+    SoServiceVnf
 )
 
 from .resource import Resource
@@ -61,7 +64,7 @@ class ServiceInstanceResource(Resource):
                 raise AttributeError(
                     "Service not distrbuted - instance can't be created"
                 )
-            if (cloud_region_id := self.data["cloud_region_id"]) is not None:
+            if (cloud_region_id := self.data.get("cloud_region_id")) is not None:
                 cloud_region: CloudRegion = CloudRegion.get_by_id(
                     cloud_owner=self.data["cloud_owner"],
                     cloud_region_id=cloud_region_id,
@@ -196,28 +199,32 @@ class ServiceInstanceResource(Resource):
             SoService: SoService object
 
         """
+        vnfs: List[SoServiceVnf] = []
+        pnfs: List[SoServicePnf] = []
+        for xnf in self.data.get("instantiation_parameters", []):
+            if "vnf_name" in xnf:
+                vnfs.append(SoServiceVnf(
+                    model_name=xnf["vnf_name"],
+                    instance_name=xnf.get("instance_name", xnf["vnf_name"]),
+                    parameters=xnf.get("parameters", {}),
+                    vf_modules=[SoServiceVfModule(
+                        model_name=vf_module["name"],
+                        instance_name=vf_module.get("instance_name", vf_module["name"]),
+                        parameters=vf_module.get("parameters", {})
+                    ) for vf_module in xnf.get("vf_modules", [])]
+                ))
+            elif "pnf_name" in xnf:
+                pnfs.append(SoServicePnf(
+                    model_name=xnf["pnf_name"],
+                    instance_name=xnf.get("instance_name", xnf["pnf_name"]),
+                    parameters=xnf.get("parameters", {})
+                ))
+            else:
+                logging.warning("Invalid content, xNF type not supported")
         return SoService(
-            subscription_service_type=self.data.get(
-                "service_subscription_type", self.data["service_name"]
-            ),
-            vnfs=[
-                {
-                    "model_name": vnf["vnf_name"],
-                    "vnf_name": vnf.get("instance_name", vnf["vnf_name"]),
-                    "parameters": vnf.get("parameters", {}),
-                    "vf_modules": [
-                        {
-                            "model_name": vf_module["name"],
-                            "vf_module_name": vf_module.get(
-                                "instance_name", vf_module["name"]
-                            ),
-                            "parameters": vf_module.get("parameters", {}),
-                        }
-                        for vf_module in vnf.get("vf_modules", [])
-                    ],
-                }
-                for vnf in self.data.get("instantiation_parameters", [])
-            ],
+            subscription_service_type=self.service_subscription.service_type,
+            vnfs=vnfs,
+            pnfs=pnfs
         )
 
     @property
