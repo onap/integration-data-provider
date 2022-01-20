@@ -1,7 +1,7 @@
 from unittest.mock import MagicMock, patch, PropertyMock
 
 from onap_data_provider.resources.service_instance_resource import (
-    ServiceInstanceResource
+    ServiceInstanceResource,
 )
 from onapsdk.exceptions import APIError
 
@@ -34,7 +34,7 @@ RESOURCE_DATA_1_1 = {
     "cloud_owner": "*cloudowner1",
     "tenant_id": "test",
     "instantiation_parameters": [],
-    "aai_service": "test"
+    "aai_service": "test",
 }
 
 
@@ -62,7 +62,7 @@ INSTANTIATION_PARAMETERS_DATA = {
                 }
             ],
         }
-    ]
+    ],
 }
 
 
@@ -139,3 +139,39 @@ def test_service_instance_resource_version_1_0_and_1_1(mock_aai_service_get_all)
     si_resource_1_0 = ServiceInstanceResource(RESOURCE_DATA_1_1)
     assert si_resource_1_0.aai_service is not None
     mock_aai_service_get_all.assert_called_once()
+
+
+@patch(
+    "onap_data_provider.resources.service_instance_resource.ServiceInstanceResource.exists",
+    new_callable=PropertyMock,
+)
+@patch("onap_data_provider.resources.service_instance_resource.Customer")
+@patch("onap_data_provider.resources.service_instance_resource.Project")
+@patch("onap_data_provider.resources.service_instance_resource.OwningEntity")
+@patch("onap_data_provider.resources.service_instance_resource.CloudRegion")
+@patch("onap_data_provider.resources.service_instance_resource.ServiceInstantiation")
+@patch("onap_data_provider.resources.service_instance_resource.Service")
+@patch("onap_data_provider.resources.service_instance_resource.AaiService")
+def test_si_resource_create_with_tenant_name(
+    mock_aai_service,
+    mock_service,
+    mock_service_instantionation,
+    mock_cr,
+    mock_oe,
+    mock_project,
+    mock_customer,
+    mock_si_resource_exists,
+):
+    data = RESOURCE_DATA_1_1
+    data.pop("tenant_id")
+    data.update({"tenant_name": "test_1"})
+    si_resource = ServiceInstanceResource(data)
+    mock_oe.get_by_owning_entity_name.side_effect = APIError
+    mock_si_resource_exists.return_value = True
+    si_resource.create()
+    mock_service.assert_not_called()
+    mock_si_resource_exists.return_value = False
+    try:
+        si_resource.create()
+    except ValueError:
+        assert True
