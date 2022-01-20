@@ -442,6 +442,108 @@ properties:
               - platform
               - line_of_business
               - aai_service
+                  required:
+                    - artifact_type
+                    - artifact_name
+                    - artifact_label
+                    - artifact_file_name
+                properties:
+                  type: array
+                  items:
+                    - type: object
+                      properties:
+                        name:
+                          type: string
+                        type:
+                          type: string
+                        value:
+                          type: string
+                      required:
+                        - name
+                        - type
+              required:
+                - name
+          required:
+            - vnf
+  service-instances:
+      type: array
+      items:
+        - type: object
+          properties:
+            service-instance:
+              type: object
+              properties:
+                service_instance_name:
+                  type: string
+                service_name:
+                  type: string
+                cloud_region:
+                  type: string
+                customer_id:
+                  type: string
+                owning_entity:
+                  type: string
+                project:
+                  type: string
+                platform:
+                  type: string
+                line_of_business:
+                  type: string
+                cloud_region_id:
+                  type: string
+                cloud_owner:
+                  type: string
+                timeout:
+                  type: number
+                  minimum: 1
+                  maximum: 99999
+                aai_service:
+                  type: string
+                tenant_id:
+                  type: string
+                service_subscription_type:
+                  type: string
+                instantiation_parameters:
+                  type: array
+                  items:
+                    - type: object
+                      properties:
+                        vnf_name:
+                          type: string
+                        sec_group:
+                          type: string
+                        public_net_id:
+                          type: string
+                        onap_private_net_id:
+                          type: string
+                        onap_private_subnet_id:
+                          type: string
+                        image_name:
+                          type: string
+                        flavor_name:
+                          type: string
+                        install_script_version:
+                          type: string
+                        demo_artifacts_version:
+                          type: string
+                        cloud_env:
+                          type: string
+                        aic-cloud-region:
+                          type: string
+                        pub_key:
+                          type: string
+              required:
+                - service_instance_name
+                - service_name
+                - cloud_region
+                - customer_id
+                - owning_entity
+                - project
+                - platform
+                - line_of_business
+                - cloud_region_id
+                - cloud_owner
+                - aai_service
   owning-entities:
     type: array
     items:
