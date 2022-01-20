@@ -1,0 +1,8 @@
+distribution_type: 'container'
+container_release_tag: '0.5.0'
+project: 'integration/data-provider'
+log_dir: 'integration-docker-onap-docker-merge-master/1'
+ref: 3a370dbe49a9cfae415d5254c91840374330a7ff
+containers:
+    - name: 'data-provider'
+      version: 'latest'
