@@ -66,10 +66,19 @@ class ServiceInstanceResource(Resource):
                     cloud_owner=self.data["cloud_owner"],
                     cloud_region_id=cloud_region_id,
                 )
-                tenant: Tenant = cloud_region.get_tenant(self.data["tenant_id"])
-                self.service_subscription.link_to_cloud_region_and_tenant(
-                    cloud_region, tenant
-                )
+                tenant: Tenant = None
+                if tenant_name := self.data.get("tenant_name"):
+                    try:
+                        tenant = next(
+                            (x for x in cloud_region.tenants if x.name == tenant_name)
+                        )
+                    except StopIteration:
+                        raise ValueError(f"Tenant '{tenant_name}' not found.")
+                else:
+                    tenant = cloud_region.get_tenant(self.data["tenant_id"])
+                    self.service_subscription.link_to_cloud_region_and_tenant(
+                        cloud_region, tenant
+                    )
             else:
                 cloud_region, tenant = None, None
             try:
