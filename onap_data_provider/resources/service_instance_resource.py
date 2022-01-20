@@ -15,7 +15,7 @@
    limitations under the License.
 """
 import logging
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Iterator
 
 from onapsdk.aai.cloud_infrastructure import CloudRegion, Tenant  # type: ignore
 from onapsdk.aai.business import Customer, OwningEntity  # type: ignore
@@ -29,7 +29,7 @@ from onapsdk.so.instantiation import (  # type: ignore
     SoService,
     SoServicePnf,
     SoServiceVfModule,
-    SoServiceVnf
+    SoServiceVnf,
 )
 
 from .resource import Resource
@@ -69,7 +69,31 @@ class ServiceInstanceResource(Resource):
                     cloud_owner=self.data["cloud_owner"],
                     cloud_region_id=cloud_region_id,
                 )
-                tenant: Tenant = cloud_region.get_tenant(self.data["tenant_id"])
+                tenant: Tenant = None
+                if tenant_name := self.data.get("tenant_name"):
+                    # TODO: https://jira.onap.org/browse/INT-2056 refactor below when ONAP SDK 9.2.3 is released
+                    cr_tenants = [
+                        x for x in cloud_region.tenants if x.name == tenant_name
+                    ]
+                    if len(cr_tenants) > 1:
+                        msg = "\n".join(
+                            [
+                                "===================",
+                                f"There are more than one tenant with given name '{tenant_name}':",
+                                "\n".join(
+                                    f"{t.name}: {t.tenant_id}" for t in cr_tenants
+                                ),
+                                "Use tenant-id instead of tenant-name to specify which tenant should be used during the instantiation.",
+                                "===================",
+                            ]
+                        )
+                        logging.error(msg)
+                        raise ValueError(
+                            "Value provided for 'tenant_name' is ambiguous."
+                        )
+                    tenant = cr_tenants.pop()
+                else:
+                    tenant = cloud_region.get_tenant(self.data["tenant_id"])
                 self.service_subscription.link_to_cloud_region_and_tenant(
                     cloud_region, tenant
                 )
@@ -219,12 +243,20 @@ class ServiceInstanceResource(Resource):
                     instance_name=xnf.get("instance_name", xnf["pnf_name"]),
                     parameters=xnf.get("parameters", {})
                 ))
+            elif "pnf_name" in xnf:
+                pnfs.append(
+                    SoServicePnf(
+                        model_name=xnf["pnf_name"],
+                        instance_name=xnf.get("instance_name", xnf["pnf_name"]),
+                        parameters=xnf.get("parameters", {}),
+                    )
+                )
             else:
                 logging.warning("Invalid content, xNF type not supported")
         return SoService(
             subscription_service_type=self.service_subscription.service_type,
             vnfs=vnfs,
-            pnfs=pnfs
+            pnfs=pnfs,
         )
 
     @property
