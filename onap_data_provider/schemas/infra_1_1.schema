@@ -395,6 +395,8 @@ properties:
                   maximum: 99999
                 aai_service:
                   type: string
+                tenant_id:
+                  type: string
                 service_subscription_type:
                   type: string
                 instantiation_parameters:
