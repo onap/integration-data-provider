@@ -1,6 +1,6 @@
 # ONAP data provider
 
-Data ingestion service for ONAP
+Data ingestion service for ONAP.
 
 ## Description
 
