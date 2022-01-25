@@ -21,8 +21,10 @@ from onapsdk.sdc.vsp import Vsp  # type: ignore
 from onapsdk.sdc.sdc_resource import SdcResource  # type: ignore
 from onapsdk.sdc.properties import Property  # type: ignore
 
+from .sdc_properties_mixins import SdcPropertiesMixins
 
-class XnfResource(ABC):
+
+class XnfResource(ABC, SdcPropertiesMixins):
     """Xnf resource class.
 
     Network function base class.
@@ -49,12 +51,6 @@ class XnfResource(ABC):
                 artifact_label=data["deployment_artifact"]["artifact_label"],
                 artifact=data["deployment_artifact"]["artifact_file_name"],
             )
-        for property_data in data.get("properties", []):
-            self._xnf.add_property(
-                Property(
-                    name=property_data["name"],
-                    property_type=property_data["type"],
-                    value=property_data.get("value"),
-                )
-            )
+        self.set_properties(self._xnf, data.get("properties", []))
+        self.set_inputs(self._xnf, data.get("inputs", []))
         self._xnf.onboard()

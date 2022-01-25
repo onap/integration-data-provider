@@ -82,6 +82,27 @@ def test_validator_vsps():
         validator.validate(VersionsEnum.V1_0, input_data)
 
 
+def test_validator_vnf():
+    validator = Validator()
+    input_data = {
+        "vnfs": [
+            {
+                "vnf": {
+                    "name": "test",
+                    "vsp": "testvsp",
+                    "inputs": [
+                        {"name": "itest", "type": "string", "value": "itest"},
+                        {"name": "itest1", "type": "boolean"},
+                        {"name": "itest2", "value": True},
+                    ],
+                }
+            }
+        ]
+    }
+    validator.validate(VersionsEnum.V1_0, input_data)
+    validator.validate(VersionsEnum.V1_1, input_data)
+
+
 def test_validator_service():
     validator = Validator()
     input_data = {
@@ -91,11 +112,15 @@ def test_validator_service():
                     "name": "test",
                     "resources": [
                         {"name": "test", "type": "test"},
-                        {"name": "test1", "type": "test2"},
+                        {
+                            "name": "test1",
+                            "type": "test2",
+                            "properties": [{"name": "test0", "value": "test1"}],
+                        },
                     ],
                     "properties": [
-                        {"name": "test", "type": "test", "value": "test"},
-                        {"name": "test1", "type": "test1"},
+                        {"name": "test", "type": "string", "value": "test"},
+                        {"name": "test1", "type": "boolean"},
                     ],
                 }
             }

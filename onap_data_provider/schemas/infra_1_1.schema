@@ -22,509 +22,504 @@ properties:
   complexes:
     type: array
     items:
-      - type: object
-        properties:
-          complex:
-            type: object
-            properties:
-              physical-location-id:
-                type: string
-              complex-name:
-                type: string
-              data-center-code:
-                type: string
-              identity-url:
-                type: string
-              physical-location-type:
-                type: string
-              street1:
-                type: string
-              street2:
-                type: string
-              city:
-                type: string
-              state:
-                type: string
-              postal-code:
-                type: string
-              country:
-                type: string
-              region:
-                type: string
-              latitude:
-                type: string
-              longitude:
-                type: string
-              elevation:
-                type: string
-              lata:
-                type: string
-            required:
-              - physical-location-id
-        required:
-          - complex
+      type: object
+      properties:
+        complex:
+          type: object
+          properties:
+            physical-location-id:
+              type: string
+            complex-name:
+              type: string
+            data-center-code:
+              type: string
+            identity-url:
+              type: string
+            physical-location-type:
+              type: string
+            street1:
+              type: string
+            street2:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            postal-code:
+              type: string
+            country:
+              type: string
+            region:
+              type: string
+            latitude:
+              type: string
+            longitude:
+              type: string
+            elevation:
+              type: string
+            lata:
+              type: string
+          required:
+            - physical-location-id
+      required:
+        - complex
   cloud-regions:
     type: array
     items:
-      - type: object
-        properties:
-          cloud-region:
-            type: object
-            properties:
-              cloud-owner:
-                type: string
-              cloud-region-id:
-                type: string
-              orchestration-disabled:
-                type: boolean
-              in-maint:
-                type: boolean
-              cloud-type:
-                type: string
-              kube-config:
-                type: string
-              tenants:
-                type: array
-                items:
-                  - type: object
-                    properties:
-                      tenant-id:
-                        type: string
-                      tenant-name:
-                        type: string
-                      tenant-context:
-                        type: string
-                    required:
-                      - tenant-id
-                      - tenant-name
-              esr-system-infos:
-                type: array
-                items:
-                  - type: object
-                    properties:
-                      esr-system-info-id:
-                        type: string
-                      user-name:
-                        type: string
-                      password:
-                        type: string
-                      system-type:
-                        type: string
-                      service-url:
-                        type: string
-                      cloud-domain:
-                        type: string
-                      default-tenant:
-                        type: string
-                    required:
-                      - esr-system-info-id
-                      - user-name
-                      - password
-                      - system-type
-                      - service-url
-                      - cloud-domain
-              complex:
+      type: object
+      properties:
+        cloud-region:
+          type: object
+          properties:
+            cloud-owner:
+              type: string
+            cloud-region-id:
+              type: string
+            orchestration-disabled:
+              type: boolean
+            in-maint:
+              type: boolean
+            tenants:
+              type: array
+              items:
                 type: object
                 properties:
-                  physical-location-id:
+                  tenant-id:
+                    type: string
+                  tenant-name:
+                    type: string
+                  tenant-context:
                     type: string
                 required:
-                  - physical-location-id
-              availability-zones:
-                type: array
-                items:
-                  - type: object
-                    properties:
-                      availability-zone-name:
-                        type: string
-                      hypervisor-type:
-                        type: string
-                    required:
-                      - availability-zone-name
-                      - hypervisor-type
-            required:
-              - cloud-owner
-              - cloud-region-id
-              - orchestration-disabled
-              - in-maint
-        required:
-          - cloud-region
+                  - tenant-id
+                  - tenant-name
+            esr-system-infos:
+              type: array
+              items:
+                type: object
+                properties:
+                  esr-system-info-id:
+                    type: string
+                  user-name:
+                    type: string
+                  password:
+                    type: string
+                  system-type:
+                    type: string
+                  service-url:
+                    type: string
+                  cloud-domain:
+                    type: string
+                  default-tenant:
+                    type: string
+                required:
+                  - esr-system-info-id
+                  - user-name
+                  - password
+                  - system-type
+                  - service-url
+                  - cloud-domain
+            complex:
+              type: object
+              properties:
+                physical-location-id:
+                  type: string
+              required:
+                - physical-location-id
+            availability-zones:
+              type: array
+              items:
+                type: object
+                properties:
+                  availability-zone-name:
+                    type: string
+                  hypervisor-type:
+                    type: string
+                required:
+                  - availability-zone-name
+                  - hypervisor-type
+          required:
+            - cloud-owner
+            - cloud-region-id
+            - orchestration-disabled
+            - in-maint
+      required:
+        - cloud-region
   customers:
     type: array
     items:
-      - type: object
-        properties:
-          customer:
-            type: object
-            properties:
-              global-customer-id:
-                type: string
-              subscriber-name:
-                type: string
-              subscriber-type:
-                type: string
-              service-subscriptions:
-                type: array
-                items:
-                  - type: object
-                    properties:
-                      service-type:
-                        type: string
-                      tenants:
-                        type: array
-                        items:
-                          - type: object
-                            properities:
-                              tenant-id:
-                                type: string
-                              cloud-owner:
-                                type: string
-                              cloud-region-id:
-                                type: string
-                            required:
-                              - tenant-id
-                              - cloud-owner
-                              - cloud-region-id
-                    required:
-                      - service-type
-            required:
-              - global-customer-id
-              - subscriber-name
-              - subscriber-type
-        required:
-          - customer
+      type: object
+      properties:
+        customer:
+          type: object
+          properties:
+            global-customer-id:
+              type: string
+            subscriber-name:
+              type: string
+            subscriber-type:
+              type: string
+            service-subscriptions:
+              type: array
+              items:
+                type: object
+                properties:
+                  service-type:
+                    type: string
+                  tenants:
+                    type: array
+                    items:
+                      type: object
+                      properities:
+                        tenant-id:
+                          type: string
+                        cloud-owner:
+                          type: string
+                        cloud-region-id:
+                          type: string
+                      required:
+                        - tenant-id
+                        - cloud-owner
+                        - cloud-region-id
+                required:
+                  - service-type
+          required:
+            - global-customer-id
+            - subscriber-name
+            - subscriber-type
+      required:
+        - customer
   vendors:
     type: array
     items:
-      - type: object
-        properties:
-          vendor:
-            type: object
-            properties:
-              name:
-                type: string
-            required:
-              - name
-        required:
-          - vendor
+      type: object
+      properties:
+        vendor:
+          type: object
+          properties:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - vendor
   vsps:
     type: array
     items:
-      - type: object
+      type: object
+      properties:
+        vsp:
+          type: object
+          properties:
+            name:
+              type: string
+            vendor:
+              type: string
+            package:
+              type: string
+          required:
+            - name
+            - vendor
+            - package
+      required:
+        - vsp
+  services:
+    type: array
+    items:
+      type: object
+      properties:
+        service:
+          type: object
+          properties:
+            name:
+              type: string
+            resources:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  properties: # Adding a prop to a component is senseless.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        value:
+                          type:
+                            - string
+                            - number
+                            - boolean
+                      required:
+                        - name
+                        - value
+                required:
+                  - name
+                  - type
+            properties: &props
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  value:
+                    type:
+                      - string
+                      - number
+                      - boolean
+                anyOf:
+                  - required:
+                      - name
+                      - type
+                  - required:
+                      - name
+                      - value
+            inputs: *props
+          required:
+            - name
+      required:
+        - service
+  pnfs:
+      type: array
+      items:
+        type: object
         properties:
-          vsp:
+          pnf:
             type: object
             properties:
               name:
                 type: string
               vendor:
                 type: string
-              package:
+              vsp:
                 type: string
-            required:
-              - name
-              - vendor
-              - package
-        required:
-          - vsp
-  services:
-    type: array
-    items:
-      - type: object
-        properties:
-          service:
-            type: object
-            properties:
-              name:
-                type: string
-              resources:
-                type: array
-                items:
-                  - type: object
-                    properties:
-                      name:
-                        type: string
-                      type:
-                        type: string
-                    required:
-                      - name
-                      - type
-              properties:
-                type: array
-                items:
-                  - type: object
-                    properties:
-                      name:
-                        type: string
-                      type:
-                        type: string
-                      value:
-                        type: string
-                    required:
-                      - name
-                      - type
-            required:
-              - name
-        required:
-          - service
-  pnfs:
-      type: array
-      items:
-        - type: object
-          properties:
-            pnf:
-              type: object
-              properties:
-                name:
-                  type: string
-                vendor:
-                  type: string
-                vsp:
-                  type: string
-                deployment_artifact:
-                  type: object
-                  properties:
-                    artifact_type:
-                      type: string
-                    artifact_name:
-                      type: string
-                    artifact_label:
-                      type: string
-                    artifact_file_name:
-                      type: string
-                  required:
-                    - artifact_type
-                    - artifact_name
-                    - artifact_label
-                    - artifact_file_name
+              deployment_artifact:
+                type: object
                 properties:
-                  type: array
-                  items:
-                    - type: object
-                      properties:
-                        name:
-                          type: string
-                        type:
-                          type: string
-                        value:
-                          type: string
-                      required:
-                        - name
-                        - type
-              required:
-                - name
-          required:
-            - pnf
+                  artifact_type:
+                    type: string
+                  artifact_name:
+                    type: string
+                  artifact_label:
+                    type: string
+                  artifact_file_name:
+                    type: string
+                required:
+                  - artifact_type
+                  - artifact_name
+                  - artifact_label
+                  - artifact_file_name
+              properties: *props
+              inputs: *props
+            required:
+              - name
+        required:
+          - pnf
   vnfs:
       type: array
       items:
-        - type: object
-          properties:
-            vnf:
-              type: object
-              properties:
-                name:
-                  type: string
-                vsp:
-                  type: string
-                deployment_artifact:
-                  type: object
-                  properties:
-                    artifact_type:
-                      type: string
-                    artifact_name:
-                      type: string
-                    artifact_label:
-                      type: string
-                    artifact_file_name:
-                      type: string
-                  required:
-                    - artifact_type
-                    - artifact_name
-                    - artifact_label
-                    - artifact_file_name
-                properties:
-                  type: array
-                  items:
-                    - type: object
-                      properties:
-                        name:
-                          type: string
-                        type:
-                          type: string
-                        value:
-                          type: string
-                      required:
-                        - name
-                        - type
-              required:
-                - name
-          required:
-            - vnf
-  service-instances:
-      type: array
-      items:
-        - type: object
-          properties:
-            service-instance:
-              type: object
-              properties:
-                service_instance_name:
-                  type: string
-                service_name:
-                  type: string
-                cloud_region:
-                  type: string
-                customer_id:
-                  type: string
-                owning_entity:
-                  type: string
-                project:
-                  type: string
-                platform:
-                  type: string
-                line_of_business:
-                  type: string
-                cloud_region_id:
-                  type: string
-                cloud_owner:
-                  type: string
-                timeout:
-                  type: number
-                  minimum: 1
-                  maximum: 99999
-                aai_service:
-                  type: string
-                service_subscription_type:
-                  type: string
-                instantiation_parameters:
-                  type: array
-                  items:
-                    - type: object
-                      properties:
-                        vnf_name:
-                          type: string
-                        sec_group:
-                          type: string
-                        public_net_id:
-                          type: string
-                        onap_private_net_id:
-                          type: string
-                        onap_private_subnet_id:
-                          type: string
-                        image_name:
-                          type: string
-                        flavor_name:
-                          type: string
-                        install_script_version:
-                          type: string
-                        demo_artifacts_version:
-                          type: string
-                        cloud_env:
-                          type: string
-                        aic-cloud-region:
-                          type: string
-                        pub_key:
-                          type: string
-              required:
-                - service_instance_name
-                - service_name
-                - customer_id
-                - owning_entity
-                - project
-                - platform
-                - line_of_business
-                - aai_service
-  owning-entities:
-    type: array
-    items:
-      - type: object
-        properities:
-          owning-entity:
+        type: object
+        properties:
+          vnf:
             type: object
             properties:
               name:
                 type: string
+              vsp:
+                type: string
+              deployment_artifact:
+                type: object
+                properties:
+                  artifact_type:
+                    type: string
+                  artifact_name:
+                    type: string
+                  artifact_label:
+                    type: string
+                  artifact_file_name:
+                    type: string
+                required:
+                  - artifact_type
+                  - artifact_name
+                  - artifact_label
+                  - artifact_file_name
+              properties: *props
+              inputs: *props
             required:
               - name
         required:
-          - owning-entity
+          - vnf
+  service-instances:
+      type: array
+      items:
+        type: object
+        properties:
+          service-instance:
+            type: object
+            properties:
+              service_instance_name:
+                type: string
+              service_name:
+                type: string
+              cloud_region:
+                type: string
+              customer_id:
+                type: string
+              owning_entity:
+                type: string
+              project:
+                type: string
+              platform:
+                type: string
+              line_of_business:
+                type: string
+              cloud_region_id:
+                type: string
+              cloud_owner:
+                type: string
+              timeout:
+                type: number
+                minimum: 1
+                maximum: 99999
+              aai_service:
+                type: string
+              service_subscription_type:
+                type: string
+              instantiation_parameters:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    vnf_name:
+                      type: string
+                    sec_group:
+                      type: string
+                    public_net_id:
+                      type: string
+                    onap_private_net_id:
+                      type: string
+                    onap_private_subnet_id:
+                      type: string
+                    image_name:
+                      type: string
+                    flavor_name:
+                      type: string
+                    install_script_version:
+                      type: string
+                    demo_artifacts_version:
+                      type: string
+                    cloud_env:
+                      type: string
+                    aic-cloud-region:
+                      type: string
+                    pub_key:
+                      type: string
+            required:
+              - service_instance_name
+              - service_name
+              - customer_id
+              - owning_entity
+              - project
+              - platform
+              - line_of_business
+              - aai_service
+  owning-entities:
+    type: array
+    items:
+      type: object
+      properities:
+        owning-entity:
+          type: object
+          properties:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - owning-entity
   projects:
     type: array
     items:
-      - type: object
-        properties:
-          project:
-            type: object
-            properities:
-              name:
-                type: string
-            required:
-              - name
-        required:
-          - project
+      type: object
+      properties:
+        project:
+          type: object
+          properities:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - project
   platforms:
     type: array
     items:
-      - type: object
-        properities:
-          platform:
-            type: object
-            properities:
-              name:
-                type: string
-            required:
-              - name
-        required:
-          - platform
+      type: object
+      properities:
+        platform:
+          type: object
+          properities:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - platform
   lines-of-business:
     type: array
     items:
-      - type: object
-        properties:
-          line-of-business:
-            type: object
-            properities:
-              name:
-                type: string
-            required:
-              - name
-        required:
-          - line-of-business
+      type: object
+      properties:
+        line-of-business:
+          type: object
+          properities:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - line-of-business
   msb-k8s-definitions:
     type: array
     items:
-        type: object
-        properties:
-          name:
-            type: string
-          version:
-            type: string
-          chart-name:
-            type: string
-          description:
-            type: string
-          artifact:
-            type: string
-          profiles:
-            type: array
-            items:
-              - type: object
-                properties:
-                  name:
-                    type: string
-                  namespace:
-                    type: string
-                  k8s-version:
-                    type: string
-                  artifact:
-                    type: string
-                required:
-                  - name
-                  - namespace
-                  - k8s-version
-                  - artifact
-        required:
-          - name
-          - version
-          - artifact
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        chart-name:
+          type: string
+        description:
+          type: string
+        artifact:
+          type: string
+        profiles:
+          type: array
+          items:
+            - type: object
+              properties:
+                name:
+                  type: string
+                namespace:
+                  type: string
+                k8s-version:
+                  type: string
+                artifact:
+                  type: string
+              required:
+                - name
+                - namespace
+                - k8s-version
+                - artifact
+      required:
+        - name
+        - version
+        - artifact
