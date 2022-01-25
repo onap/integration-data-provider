@@ -14,26 +14,22 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 """
-from typing import Any, Dict, Mapping, Optional, Type
+from typing import Any, Dict, List, Mapping, Optional, Type
 
 from onapsdk.sdc.pnf import Pnf  # type: ignore
-from onapsdk.sdc.properties import Property  # type: ignore
 from onapsdk.sdc.sdc_resource import SdcResource  # type: ignore
 from onapsdk.sdc.service import Service, ServiceInstantiationType  # type: ignore
 from onapsdk.sdc.vf import Vf  # type: ignore
 from onapsdk.sdc.vl import Vl  # type: ignore
 
 from .resource import Resource
+from .sdc_properties_mixins import SdcPropertiesMixins
 
 
-class ServiceResource(Resource):
+class ServiceResource(Resource, SdcPropertiesMixins):
     """Service resource class."""
 
-    RESOURCES: Mapping[str, Type[SdcResource]] = {
-        "PNF": Pnf,
-        "VF": Vf,
-        "VL": Vl,
-    }
+    RESOURCES: Mapping[str, Type[SdcResource]] = {"PNF": Pnf, "VF": Vf, "VL": Vl}
 
     def __init__(self, data: Dict[str, Any]) -> None:
         """Initialize Service resource.
@@ -59,17 +55,19 @@ class ServiceResource(Resource):
                 )
                 service.add_resource(resource)
                 component = service.get_component(resource)
-                for prop_key, prop_value in resource_data.get("properties", {}).items():
-                    prop = component.get_property(prop_key)
-                    prop.value = prop_value
-            for property_data in self.data.get("properties", []):
-                service.add_property(
-                    Property(
-                        property_data["name"],
-                        property_data["type"],
-                        value=property_data.get("value"),
-                    )
-                )
+                properties_data = resource_data.get("properties", [])
+                if properties_data and isinstance(properties_data, List):
+                    self.set_properties(component, properties_data)
+                else:
+                    # backward compatibility
+                    for prop_key, prop_value in resource_data.get(
+                        "properties", {}
+                    ).items():
+                        prop = component.get_property(prop_key)
+                        prop.value = prop_value
+                self.set_inputs(component, resource_data.get("inputs", []))
+            self.set_properties(service, self.data.get("properties", []))
+            self.set_inputs(service, self.data.get("inputs", []))
             service.checkin()
             service.onboard()
             self._service = service

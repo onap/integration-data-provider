@@ -6,6 +6,14 @@ from onap_data_provider.resources.service_resource import ServiceResource
 
 SERVICE_RESOURCE_DATA = {
     "name": "test",
+    "inputs": [
+        {"name": "itest", "type": "string", "value": "itest"},
+        {"name": "itest1", "type": "boolean"},
+    ],
+    "properties": [
+        {"name": "test", "type": "string", "value": "test"},
+        {"name": "test1", "type": "boolean"},
+    ],
 }
 
 
