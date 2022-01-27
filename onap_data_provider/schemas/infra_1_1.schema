@@ -505,37 +505,51 @@ properties:
   msb-k8s-definitions:
     type: array
     items:
-      type: object
-      properties:
-        name:
-          type: string
-        version:
-          type: string
-        chart-name:
-          type: string
-        description:
-          type: string
-        artifact:
-          type: string
-        profiles:
-          type: array
-          items:
-            - type: object
-              properties:
-                name:
-                  type: string
-                namespace:
-                  type: string
-                k8s-version:
-                  type: string
-                artifact:
-                  type: string
-              required:
-                - name
-                - namespace
-                - k8s-version
-                - artifact
-      required:
-        - name
-        - version
-        - artifact
+        type: object
+        properties:
+          name:
+            type: string
+          version:
+            type: string
+          chart-name:
+            type: string
+          description:
+            type: string
+          artifact:
+            type: string
+          profiles:
+            type: array
+            items:
+              - type: object
+                properties:
+                  name:
+                    type: string
+                  namespace:
+                    type: string
+                  k8s-version:
+                    type: string
+                  artifact:
+                    type: string
+                required:
+                  - name
+                  - namespace
+                  - k8s-version
+                  - artifact
+        required:
+          - name
+          - version
+          - artifact
+  data-dictionaries-sets:
+    type: array
+    items:
+      - type: object
+        properties:
+          data-dictionaries:
+            type: object
+            properities:
+              file-path:
+                type: string
+            required:
+              - file-path
+        required:
+          - data-dictionaries
