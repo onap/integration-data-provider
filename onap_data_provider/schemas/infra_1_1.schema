@@ -281,6 +281,12 @@ properties:
                   type: string
                 vsp:
                   type: string
+                category:
+                  type: string
+                subcategory:
+                  type: string
+                vendor:
+                  type: string
                 deployment_artifact:
                   type: object
                   properties:
@@ -326,6 +332,12 @@ properties:
                 name:
                   type: string
                 vsp:
+                  type: string
+                category:
+                  type: string
+                subcategory:
+                  type: string
+                vendor:
                   type: string
                 deployment_artifact:
                   type: object

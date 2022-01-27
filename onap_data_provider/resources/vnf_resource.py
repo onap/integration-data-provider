@@ -18,6 +18,7 @@
 import logging
 from typing import Any, Dict
 
+from onapsdk.sdc.vendor import Vendor  # type: ignore
 from onapsdk.sdc.vf import Vf  # type: ignore
 from .resource import Resource
 from .xnf_resource import XnfResource
@@ -46,7 +47,9 @@ class VnfResource(Resource, XnfResource):
         """
         if not self.exists:
             logging.debug("Create Vnf %s", self.data["name"])
-            self._xnf = Vf(name=self.data["name"])
+            self._xnf = Vf(name=self.data["name"], category=self.data.get("category"), subcategory=self.data.get("subcategory"))
+            if (vendor_name := self.data.get("vendor")) is not None:
+                self._xnf._vendor = Vendor(vendor_name)
             self.onboard_resource_with_properties(self.data)
 
     @property

@@ -20,6 +20,11 @@ resources:
           artifact_name: BASIC_VM_enriched.zip
           artifact_label: vfwcds
           artifact_file_name: BASIC_VM_enriched.zip
+    - vnf:
+        name: allotted-resource-vf
+        vendor: sample-vendor # Make sure it exists!
+        category: Allotted Resource
+        subcategory: Allotted Resource
 
   pnfs:
     - pnf:

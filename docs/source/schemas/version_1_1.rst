@@ -190,6 +190,14 @@ PNF
      - string
      - NO
      -
+   * - category
+     - string
+     - NO
+     -
+   * - subcategory
+     - string
+     - NO
+     -
    * - deployment_artifact
      - `PNF deployment artifact 1.1`_
      - NO
@@ -221,7 +229,19 @@ VNF
      - string
      - YES
      -
+   * - vendor
+     - string
+     - NO
+     -
    * - vsp
+     - string
+     - NO
+     -
+   * - category
+     - string
+     - NO
+     -
+   * - subcategory
      - string
      - NO
      -

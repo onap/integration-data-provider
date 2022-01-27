@@ -47,7 +47,7 @@ class PnfResource(Resource, XnfResource):
         """
         if not self.exists:
             logging.debug("Create Pnf %s", self.data["name"])
-            self._xnf = Pnf(self.data["name"])
+            self._xnf = Pnf(self.data["name"], category=self.data.get("category"), subcategory=self.data.get("subcategory"))
             if (vendor_name := self.data.get("vendor")) is not None:
                 self._xnf.vendor = Vendor(vendor_name)
             self.onboard_resource_with_properties(self.data)
