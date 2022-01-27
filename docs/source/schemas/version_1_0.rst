@@ -399,3 +399,18 @@ VF modules instantiation parameters
      - List of key-value parameters
      - NO
      -
+
+Data dictionary
+---------------
+
+.. list-table::
+   :header-rows: 1
+
+   * - Property
+     - Type
+     - Required
+     - Comment
+   * - file-path
+     - string
+     - YES
+     -
