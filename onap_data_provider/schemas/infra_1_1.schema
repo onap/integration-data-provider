@@ -528,3 +528,17 @@ properties:
           - name
           - version
           - artifact
+  data-dictionaries-sets:
+    type: array
+    items:
+      - type: object
+        properties:
+          data-dictionaries:
+            type: object
+            properities:
+              file-path:
+                type: string
+            required:
+              - file-path
+        required:
+          - data-dictionaries

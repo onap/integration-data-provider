@@ -38,6 +38,7 @@ from .service_instance_resource import (
 from .vendor_resource import VendorResource
 from .vnf_resource import VnfResource
 from .vsp_resource import VspResource
+from .data_dictionary_resource import DataDictionarySetResource
 from ..versions import VersionsEnum
 
 if typing.TYPE_CHECKING:
@@ -128,6 +129,11 @@ class ResourceCreator(ABC):
             VersionsEnum.V1_0: MsbK8SDefinitionResource,
             VersionsEnum.V1_1: MsbK8SDefinitionResource,
         },
+        "data-dictionaries": {
+            VersionsEnum.NONE: DataDictionarySetResource,
+            VersionsEnum.V1_0: DataDictionarySetResource,
+            VersionsEnum.V1_1: DataDictionarySetResource,
+        },
     }
 
     @classmethod
@@ -157,6 +163,7 @@ class ResourceCreator(ABC):
          - platform: PlatformResource
          - owning-entity: OwningEntityResource
          - msb-k8s-definition: MsbK8SDefinitionResource
+         - data-dictionaries: DataDictionarySetResource
 
         Args:
             resource_type (str): Resource type to create
