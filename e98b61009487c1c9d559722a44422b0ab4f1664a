@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7423ee4a_e0e95093",
+        "filename": "onap_data_provider/resources/service_instance_resource.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-01-28T14:14:31Z",
+      "side": 1,
+      "message": "if you pop it then that tenant won\u0027t be on the log below because you iterate through the list without that element (pop remove the last element from the list)\nYou can check the lenght of the list, if len \u003e 1 then show that error",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "e98b61009487c1c9d559722a44422b0ab4f1664a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c09efbe_96085a14",
+        "filename": "onap_data_provider/resources/service_instance_resource.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-01-28T14:14:31Z",
+      "side": 1,
+      "message": "that code will be only executed if user provide \"tenant_id\", for the \"tenant_name\" case it\u0027s not used. Move it outside the conditional statement",
+      "range": {
+        "startLine": 97,
+        "startChar": 20,
+        "endLine": 99,
+        "endChar": 21
+      },
+      "revId": "e98b61009487c1c9d559722a44422b0ab4f1664a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f82a0e8c_11803d0d",
+        "filename": "onap_data_provider/resources/service_instance_resource.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-01-28T14:14:31Z",
+      "side": 1,
+      "message": "wondering why it changes?",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 17
+      },
+      "revId": "e98b61009487c1c9d559722a44422b0ab4f1664a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c99d233_688dbd48",
+        "filename": "onap_data_provider/schemas/infra_1_1.schema",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-01-28T14:14:31Z",
+      "side": 1,
+      "message": "not related change, just \"tenant-name\" should be added",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 546,
+        "endChar": 29
+      },
+      "revId": "e98b61009487c1c9d559722a44422b0ab4f1664a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
