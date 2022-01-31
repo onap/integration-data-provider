@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcf8c0a2_9dcac132",
+        "filename": "onap_data_provider/resources/service_instance_resource.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-01-31T13:03:34Z",
+      "side": 1,
+      "message": "Please wrap that line also on try.. except.. or check the lenght of the list. If the list is empty it will raise IndexError exception",
+      "revId": "5e6c550b0824c2ed39f8a289e0f187ef6f451d5c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17597b65_9eededf6",
+        "filename": "onap_data_provider/schemas/infra_1_1.schema",
+        "patchSetId": 6
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-01-31T13:03:34Z",
+      "side": 1,
+      "message": "shouldn\u0027t be tenant_name?",
+      "range": {
+        "startLine": 405,
+        "startChar": 14,
+        "endLine": 405,
+        "endChar": 23
+      },
+      "revId": "5e6c550b0824c2ed39f8a289e0f187ef6f451d5c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
