@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7430bd92_17e4e243",
+        "filename": "onap_data_provider/resources/data_dictionary_resource.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-01-31T20:56:45Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "f865b286fecb7b1713f21f7a2c664ce6d8f941a8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dce08298_797ed494",
+        "filename": "onap_data_provider/resources/data_dictionary_resource.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-01-31T20:56:45Z",
+      "side": 1,
+      "message": "Use `data_dictionaries` property",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 35
+      },
+      "revId": "f865b286fecb7b1713f21f7a2c664ce6d8f941a8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb25a3a9_d7c37761",
+        "filename": "onap_data_provider/resources/data_dictionary_resource.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-01-31T20:56:45Z",
+      "side": 1,
+      "message": "Not sure about that... Exists is more to check if object already exists in ONAP (in my opinion). But for data dictionaries I\u0027m not sure if it\u0027s suitable to check or just push them and upload a new ones (there is most often a lot of data dictionaries in file and send GET request and POST then would have no sense). I\u0027d remove \"exists\" and call self.data_dictionaries.upload() every time. What\u0027s your opinion?",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "f865b286fecb7b1713f21f7a2c664ce6d8f941a8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d21f753_570b0c4a",
+        "filename": "onap_data_provider/resources/data_dictionary_resource.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-01-31T20:56:45Z",
+      "side": 1,
+      "message": "That should be one indent level less",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "f865b286fecb7b1713f21f7a2c664ce6d8f941a8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
