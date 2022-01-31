@@ -172,3 +172,39 @@ def test_test_service_instance_resource_vnf_and_pnf_instantiation(mock_service_s
     pnf = so_service.pnfs[0]
     assert pnf.instance_name == "test_pnf_instance"
     assert pnf.model_name == "test_pnf"
+
+
+@patch(
+    "onap_data_provider.resources.service_instance_resource.ServiceInstanceResource.exists",
+    new_callable=PropertyMock,
+)
+@patch("onap_data_provider.resources.service_instance_resource.Customer")
+@patch("onap_data_provider.resources.service_instance_resource.Project")
+@patch("onap_data_provider.resources.service_instance_resource.OwningEntity")
+@patch("onap_data_provider.resources.service_instance_resource.CloudRegion")
+@patch("onap_data_provider.resources.service_instance_resource.ServiceInstantiation")
+@patch("onap_data_provider.resources.service_instance_resource.Service")
+@patch("onap_data_provider.resources.service_instance_resource.AaiService")
+def test_si_resource_create_with_tenant_name(
+    mock_aai_service,
+    mock_service,
+    mock_service_instantionation,
+    mock_cr,
+    mock_oe,
+    mock_project,
+    mock_customer,
+    mock_si_resource_exists,
+):
+    data = RESOURCE_DATA_1_1
+    data.pop("tenant_id")
+    data.update({"tenant_name": "test_1"})
+    si_resource = ServiceInstanceResource(data)
+    mock_oe.get_by_owning_entity_name.side_effect = APIError
+    mock_si_resource_exists.return_value = True
+    si_resource.create()
+    mock_service.assert_not_called()
+    mock_si_resource_exists.return_value = False
+    try:
+        si_resource.create()
+    except ValueError:
+        assert True
