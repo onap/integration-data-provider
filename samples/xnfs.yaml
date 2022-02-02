@@ -25,6 +25,12 @@ resources:
         vendor: sample-vendor # Make sure it exists!
         category: Allotted Resource
         subcategory: Allotted Resource
+    - vnf:
+        name: sample-vnf-with-vfc-as-property
+        vsp: sample-vsp # Make sure it exists!
+        resources:
+          - xnf_type: "VFC"
+            name: "AllottedResource"
 
   pnfs:
     - pnf:

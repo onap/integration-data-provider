@@ -324,6 +324,18 @@ properties:
                   - artifact_file_name
               properties: *props
               inputs: *props
+              resources:
+                type: array
+                items:
+                  - type: object
+                    properties:
+                      xnf_type:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                      - xnf_type
+                      - name
             required:
               - name
         required:
@@ -364,6 +376,18 @@ properties:
                   - artifact_file_name
               properties: *props
               inputs: *props
+              resources:
+                type: array
+                items:
+                  - type: object
+                    properties:
+                      xnf_type:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                      - xnf_type
+                      - name
             required:
               - name
         required:

@@ -196,6 +196,10 @@ PNF
      - List of `PNF Properties 1.0`_
      - NO
      -
+   * - resources
+     - List of `PNF Resources 1.0`_
+     - NO
+     -
 
 .. _PNF deployment artifact 1.0:
 
@@ -204,6 +208,10 @@ PNF
 .. _PNF properties 1.0:
 
 .. include:: /schemas/resources/shared/xnf_property.rst
+
+.. _PNF resources 1.0:
+
+.. include:: /schemas/resources/shared/xnf_resources.rst
 
 VNF
 ---
@@ -231,6 +239,10 @@ VNF
      - List of `VNF properties 1.0`_
      - NO
      -
+   * - resources
+     - List of `VNF Resources 1.0`_
+     - NO
+     -
 
 .. _VNF deployment artifact 1.0:
 
@@ -247,6 +259,11 @@ VNF
 .. include:: /schemas/resources/shared/platform.rst
 
 .. include:: /schemas/resources/shared/line_of_business.rst
+
+.. _VNF resources 1.0:
+
+.. include:: /schemas/resources/shared/xnf_resources.rst
+
 
 MSB k8s definition
 ------------------
