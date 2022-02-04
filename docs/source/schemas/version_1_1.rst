@@ -159,6 +159,10 @@ Service
      - List of `Service properties 1.1`_
      - NO
      -
+   * - inputs
+     - List of `Service inputs 1.1`_
+     - NO
+     -
 
 .. _Service resources 1.1:
 
@@ -167,6 +171,39 @@ Service
 .. _Service properties 1.1:
 
 .. include:: /schemas/resources/shared/service_properties.rst
+
+.. _Service inputs 1.1:
+
+Service inputs
+^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Property
+     - Type
+     - Required
+     - Comment
+   * - name
+     - string
+     - YES
+     -
+   * - type
+     - string
+     - NO
+     - Required if new input is going to be declared
+   * - value
+     - string|boolean|number
+     - NO
+     - Required if a default value is going to be set
+   * - nested-input
+     - boolean
+     - NO
+     - Determines if nested input is going to be created
+   * - resource
+     - boolean
+     - NO
+     - Required if nested input is going to be created
 
 PNF
 ---
