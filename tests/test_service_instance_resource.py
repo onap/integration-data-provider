@@ -128,20 +128,20 @@ def test_si_resource_create(
     mock_service_instantionation.instantiate_macro.assert_called_once()
 
 
-def test_so_service():
+@patch("onap_data_provider.resources.service_instance_resource.ServiceInstanceResource.service_subscription", new_callable=PropertyMock)
+def test_so_service(mock_service_subscription):
     si_resource = ServiceInstanceResource(INSTANTIATION_PARAMETERS_DATA)
     so_service = si_resource.so_service
-    assert so_service.subscription_service_type == "service1"
     assert len(so_service.vnfs) == 1
     vnf = so_service.vnfs[0]
-    assert vnf["model_name"] == "test"
-    assert vnf["vnf_name"] == "test"
-    assert len(vnf["parameters"]) == 2
-    assert len(vnf["vf_modules"]) == 1
-    vf_module = vnf["vf_modules"][0]
-    assert vf_module["model_name"] == "base_ubuntu20"
-    assert vf_module["vf_module_name"] == "base_ubuntu20"
-    assert len(vf_module["parameters"]) == 10
+    assert vnf.model_name == "test"
+    assert vnf.instance_name == "test"
+    assert len(vnf.parameters) == 2
+    assert len(vnf.vf_modules) == 1
+    vf_module = vnf.vf_modules[0]
+    assert vf_module.model_name == "base_ubuntu20"
+    assert vf_module.instance_name == "base_ubuntu20"
+    assert len(vf_module.parameters) == 10
 
 
 @patch("onap_data_provider.resources.service_instance_resource.AaiService.get_all")
