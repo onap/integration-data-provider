@@ -1,4 +1,4 @@
-from unittest.mock import patch, PropertyMock
+from unittest.mock import MagicMock, patch, PropertyMock
 
 from onap_data_provider.resources.vnf_resource import VnfResource
 
@@ -26,3 +26,37 @@ def test_vnf_resource_vnf(mock_vnf_created):
     assert vnf_resource.vnf is None
     mock_vnf_created.return_value = True
     assert vnf_resource.vnf is not None
+
+
+@patch(
+    "onap_data_provider.resources.vnf_resource.Vf.create",
+)
+@patch(
+    "onap_data_provider.resources.vnf_resource.Vf.add_resource",
+)
+@patch(
+    "onap_data_provider.resources.vnf_resource.Vf.onboard",
+)
+@patch(
+    "onap_data_provider.resources.vnf_resource.VnfResource.vnf",
+    new_callable=PropertyMock,
+)
+@patch(
+    "onap_data_provider.resources.xnf_resource.Vfc",
+)
+def test_vnf_resource_onboards_with_vfc(
+    mock_vfc, mock_vnf, mock_onboard, mock_add_resource, mock_vnf_create
+):
+    mock_vfc = MagicMock()
+    mock_vnf.return_value = None
+    data_no_composition = {"name": "test_vnf"}
+    vnf_resource = VnfResource(data_no_composition)
+    vnf_resource.create()
+    mock_add_resource.assert_not_called()
+    data_with_composition = {
+        "name": "test_vnf",
+        "resources": [{"name": "test", "xnf_type": "VFC"}],
+    }
+    vnf_resource = VnfResource(data_with_composition)
+    vnf_resource.create()
+    mock_add_resource.assert_called_once()
