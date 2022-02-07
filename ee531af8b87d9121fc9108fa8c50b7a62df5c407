@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6b962ff_b213bb5a",
+        "filename": "onap_data_provider/resources/sdc_properties_mixins.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 7283
+      },
+      "writtenOn": "2022-02-07T14:12:26Z",
+      "side": 1,
+      "message": "Docstring missing",
+      "revId": "ee531af8b87d9121fc9108fa8c50b7a62df5c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "983231e1_d343014b",
+        "filename": "onap_data_provider/resources/sdc_properties_mixins.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 7283
+      },
+      "writtenOn": "2022-02-07T14:12:26Z",
+      "side": 1,
+      "message": "Missing arguments description in docstring",
+      "revId": "ee531af8b87d9121fc9108fa8c50b7a62df5c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a58c460_5095a7e9",
+        "filename": "onap_data_provider/resources/sdc_properties_mixins.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 7283
+      },
+      "writtenOn": "2022-02-07T14:12:26Z",
+      "side": 1,
+      "message": "Please update docstring of this method",
+      "revId": "ee531af8b87d9121fc9108fa8c50b7a62df5c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
