@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "498ab9ae_4a8fc928",
+        "filename": "onap_data_provider/resources/sdc_properties_mixins.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 7283
+      },
+      "writtenOn": "2022-02-07T14:19:27Z",
+      "side": 1,
+      "message": "Perhaps the class should be abstract, what do you think?",
+      "revId": "ee531af8b87d9121fc9108fa8c50b7a62df5c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6b962ff_b213bb5a",
         "filename": "onap_data_provider/resources/sdc_properties_mixins.py",
         "patchSetId": 3
