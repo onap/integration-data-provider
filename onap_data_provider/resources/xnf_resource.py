@@ -26,7 +26,7 @@ from onapsdk.sdc.vfc import Vfc  # type: ignore
 from .sdc_properties_mixins import SdcPropertiesMixins
 
 
-class XnfResource(ABC, SdcPropertiesMixins):
+class XnfResource(SdcPropertiesMixins, ABC):
     """Xnf resource class.
 
     Network function base class.

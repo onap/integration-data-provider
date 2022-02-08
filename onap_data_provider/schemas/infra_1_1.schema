@@ -281,7 +281,35 @@ properties:
                   - required:
                       - name
                       - value
-            inputs: *props
+            inputs: &inputs
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  nested-input:
+                    type: boolean
+                  resource:
+                    type: string
+                  value:
+                    type:
+                      - string
+                      - number
+                      - boolean
+                anyOf:
+                  - required:
+                      - name
+                      - type
+                  - required:
+                      - name
+                      - value
+                  - required:
+                      - name
+                      - nested-input
+                      - resource
           required:
             - name
       required:
