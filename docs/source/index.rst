@@ -12,6 +12,7 @@ Welcome to ONAP data provider's documentation!
 
    description
    schemas
+   tags
    usage
 
 
