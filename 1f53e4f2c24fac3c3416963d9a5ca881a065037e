@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae4ffc40_a9c53475",
+        "filename": "onap_data_provider/property_tag/properties_getter.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7283
+      },
+      "writtenOn": "2022-02-11T10:28:56Z",
+      "side": 1,
+      "message": "Missing docstring",
+      "revId": "1f53e4f2c24fac3c3416963d9a5ca881a065037e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da281939_2488256d",
+        "filename": "onap_data_provider/tag_handlers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7283
+      },
+      "writtenOn": "2022-02-11T10:28:56Z",
+      "side": 1,
+      "message": "Missing docstring",
+      "revId": "1f53e4f2c24fac3c3416963d9a5ca881a065037e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
