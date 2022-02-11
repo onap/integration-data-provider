@@ -292,6 +292,8 @@ properties:
                     type: string
                   nested-input:
                     type: boolean
+                  resource-property:
+                    type: boolean
                   resource:
                     type: string
                   value:
