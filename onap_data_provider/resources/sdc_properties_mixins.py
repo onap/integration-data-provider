@@ -20,7 +20,7 @@ from typing import Any, Dict, List, Union
 
 from onapsdk.exceptions import SDKException, ValidationError, ParameterError  # type: ignore
 from onapsdk.sdc.component import Component  # type: ignore
-from onapsdk.sdc.properties import NestedInput, Property  # type: ignore
+from onapsdk.sdc.properties import NestedInput, Property, ComponentProperty  # type: ignore
 from onapsdk.sdc.sdc_resource import SdcResource  # type: ignore
 
 
@@ -116,24 +116,51 @@ class SdcPropertiesMixins(ABC):
         comp: Component = propresource.get_component_by_name(data["resource"])
         propresource.declare_input(NestedInput(comp.sdc_resource, comp.sdc_resource.get_input(data["name"])))
 
-    def set_inputs(
-        self, propresource: Union[SdcResource, Component], data: List[Dict[str, Any]]
+    def declare_resource_property_input(
+        self, sdc_resource: Union[SdcResource, Component], input_data: Dict[str, Any]
     ) -> None:
-        """Set inputs of an  SdcResource.
+        """Declare input from resource's property.
 
         Args:
-            sdcresource (SdcResource): the SdcResource the inputs should belong to
-            data (Dict[str, Any]): Data needed to create resource.
+            sdc_resource (SdcResource): Resource for which input is going to be declared
+            input_data (Dict[str, Any]): Data used for input creation.
         """
-        for property_data in data:  # type: Dict[str, Any]
-            if property_data.get("nested-input"):
-                self.declare_nested_input(propresource, property_data)
+        resource_component: Component = sdc_resource.get_component_by_name(
+            input_data["resource"]
+        )
+        component_property: ComponentProperty = resource_component.get_property(
+            input_data["name"]
+        )
+        sdc_resource.declare_input(Property(
+            name=component_property.name,
+            property_type=component_property.property_type,
+            value=component_property.value,
+        ))
+
+    def set_inputs(
+        self, sdc_resource: Union[SdcResource, Component], inputs_data: List[Dict[str, Any]],
+    ) -> None:
+        """Set inputs of an SdcResource.
+
+        Args:
+            sdc_resource (SdcResource): the SdcResource the inputs should belong to
+            inputs_data (Dict[str, Any]): Input data to be set into resource.
+        """
+        for input_data in inputs_data:  # type: Dict[str, Any]
+            if input_data.get("nested-input"):
+                self.declare_nested_input(sdc_resource, input_data)
+            elif input_data.get("resource-property"):
+                self.declare_resource_property_input(sdc_resource, input_data)
+            # In case resource already has input with given name then set its value only
             elif any(
-                (prop.name == property_data["name"] for prop in propresource.inputs)
+                (
+                    resource_input.name == input_data["name"]
+                    for resource_input in sdc_resource.inputs
+                )
             ):
-                propresource.set_input_default_value(
-                    propresource.get_input(property_data["name"]),
-                    property_data.get("value"),
+                sdc_resource.set_input_default_value(
+                    sdc_resource.get_input(input_data["name"]),
+                    input_data.get("value"),
                 )
             else:
-                self.declare_input(propresource, property_data)
+                self.declare_input(sdc_resource, input_data)

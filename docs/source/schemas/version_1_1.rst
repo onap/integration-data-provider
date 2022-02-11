@@ -200,6 +200,10 @@ Service inputs
      - boolean
      - NO
      - Determines if nested input is going to be created
+   * - resource-property
+     - boolean
+     - NO
+     - Determines whether use resource's property as an input
    * - resource
      - boolean
      - NO

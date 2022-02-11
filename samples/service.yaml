@@ -24,11 +24,21 @@ resources:
           - name: sample-vnf # Make sure it exists!
             type: VF
             properties:
-              controller_actor: "CDS"
-              skip_post_instantiation_configuration: False
-              sdnc_artifact_name: "vnf"
-              sdnc_model_version: "1.0.0"
-              sdnc_model_name: "ubuntu20"
+              - name: controller_actor
+                type: string
+                value: "CDS"
+              - name: skip_post_instantiation_configuration
+                type: boolean
+                value: False
+              - name: sdnc_artifact_name
+                type: string
+                value: "vnf"
+              - name: sdnc_model_version
+                type: string
+                value: "1.0.0"
+              - name: sdnc_model_name
+                type: string
+                value: "ubuntu20"
     - service:
         name: sample-service-with-pnf
         resources:
@@ -40,13 +50,37 @@ resources:
           - name: sample-pnf # Make sure it exists!
             type: PNF
             properties:
-              controller_actor: "CDS"
-              skip_post_instantiation_configuration: False
-              sdnc_artifact_name: "vnf"
-              sdnc_model_version: "1.0.0"
-              sdnc_model_name: "ubuntu20"
+              - name: controller_actor
+                type: string
+                value: "CDS"
+              - name: skip_post_instantiation_configuration
+                type: boolean
+                value: False
+              - name: sdnc_artifact_name
+                type: string
+                value: "vnf"
+              - name: sdnc_model_version
+                type: string
+                value: "1.0.0"
+              - name: sdnc_model_name
+                type: string
+                value: "ubuntu20"
     - service:
         name: sample-service-with-vl
         resources:
           - name: sample-vl # Make sure it exists!
             type: VL
+
+    - service:
+        name: test-nested-inputs-service-1
+        category: Network L4+
+        description: LFN demo service
+        instantiation-type: Macro
+        resources:
+          - name: test-ar-pnf
+            type: PNF
+        inputs:
+          - resource-property: true
+            resource: test-ar-pnf
+            name: resource-property-name
+            value: test
