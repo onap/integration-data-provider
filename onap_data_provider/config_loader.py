@@ -17,11 +17,12 @@
 from pathlib import Path
 from typing import Any, Iterator, List
 import yaml
-from onap_data_provider.tag_handlers import join, generate_random_uuid
+from onap_data_provider.tag_handlers import join, generate_random_uuid, resource_property
 
 # register custom tag handlers in yaml.SafeLoader
 yaml.add_constructor("!join", join, yaml.SafeLoader)
 yaml.add_constructor("!uuid4", generate_random_uuid, yaml.SafeLoader)
+yaml.add_constructor("!onap_resource_property", resource_property, yaml.SafeLoader)
 
 
 class ConfigLoader:

@@ -19,6 +19,8 @@ from typing import Any
 
 import yaml
 
+from .property_tag.properties_getter import PropertiesGetter
+
 
 def join(loader: yaml.SafeLoader, node: yaml.Node) -> str:
     """Concatinates the nodes fields for !join tag.
@@ -52,3 +54,23 @@ def generate_random_uuid(*_: Any) -> str:
         str: randomly generated UUID
     """
     return str(uuid.uuid4())
+
+
+def resource_property(loader: yaml.SafeLoader, node: yaml.Node) -> Any:
+    """Resource property tag method.
+
+    Constructs a scalar from the YAML node and uses `PropertiesGetter`
+        to get a property value from already existing ONAP resource.
+
+    Args:
+        loader (yaml.SafeLoader): YAML Safe Loader
+        node (yaml.Node): Node to get values from
+
+    Raises:
+        ValueError: Given property type from the node is not supported by a tag
+
+    Returns:
+        Any: Resource's property value
+    """
+    resource_type, *args = loader.construct_scalar(node).split(" ")  # type: ignore
+    return PropertiesGetter.get_property(resource_type, *args)
