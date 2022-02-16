@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Piotr Stanior <piotr.stanior@t-mobile.pl>
+Code-Review+2: Morgan Richomme <morgan.richomme@orange.com>
+Submitted-by: Michal Jagiello <michal.jagiello@t-mobile.pl>
+Submitted-at: Wed, 16 Feb 2022 12:42:06 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/integration/data-provider/+/127034
+Project: integration/data-provider
+Branch: refs/heads/master
