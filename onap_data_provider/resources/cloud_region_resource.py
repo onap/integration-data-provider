@@ -21,6 +21,8 @@ from onap_data_provider.resources.esr_system_info_resource import (
 import logging
 from typing import Any, Dict
 
+from onapsdk.aai.aai_element import Relationship  # type: ignore
+from onapsdk.aai.business import Project  # type: ignore
 from onapsdk.aai.cloud_infrastructure import CloudRegion, Complex  # type: ignore
 from onapsdk.msb.k8s.connectivity_info import ConnectivityInfo  # type: ignore
 from onapsdk.so.so_db_adapter import SoDbAdapter, IdentityService  # type: ignore
@@ -122,6 +124,20 @@ class CloudRegionResource(Resource):
                     IdentityService("DEFAULT_KEYSTONE"),
                 )
 
+        # Link with project
+        for project_data in self.data.get("projects", []):
+            try:
+                project: Project = Project.get_by_name(project_data["project"]["name"])
+            except ResourceNotFound:
+                project = Project.create(project_data["project"]["name"])
+            project.add_relationship(
+                Relationship(
+                    related_to="cloud-region",
+                    related_link=self.cloud_region.url,
+                    relationship_data=[]
+                )
+            )
+
     @property
     def exists(self) -> bool:
         """Determine if resource already exists or not.
@@ -156,21 +172,16 @@ class CloudRegionResource(Resource):
         return self._cloud_region
 
     def _link_to_complex(self, complex_physical_id: str) -> None:
-        try:  # TODO: change it when https://gitlab.com/Orange-OpenSource/lfn/onap/python-onapsdk/-/issues/120 is fixed
-            if self.cloud_region.complex:
-                logging.info(
-                    "Cloud region has relationship with complex: %s. New relationship can't be created",
-                    self.cloud_region.complex.physical_location_id,
-                )
-                return
-        except ResourceNotFound:
-            logging.debug("Cloud region has no complex linked with")
-        try:
-            complex: Complex = next(
-                Complex.get_all(physical_location_id=complex_physical_id)
+        if self.cloud_region.complex:
+            logging.info(
+                "Cloud region has relationship with complex: %s. New relationship can't be created",
+                self.cloud_region.complex.physical_location_id,
             )
-            self.cloud_region.link_to_complex(complex)
-        except StopIteration:
+            return
+        try:
+            cmplx: Complex = Complex.get_by_physical_location_id(complex_physical_id)
+            self.cloud_region.link_to_complex(cmplx)
+        except ResourceNotFound:
             logging.error(
                 "Complex %s does not exist, please create it before cloud region creation",
                 complex_physical_id,

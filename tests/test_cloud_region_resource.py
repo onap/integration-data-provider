@@ -80,21 +80,22 @@ def test_cloud_region_create(mock_cloud_region_create, mock_exists):
     "onap_data_provider.resources.cloud_region_resource.CloudRegionResource.cloud_region",
     new_callable=PropertyMock,
 )
-@patch("onap_data_provider.resources.cloud_region_resource.Complex.get_all")
+@patch("onap_data_provider.resources.cloud_region_resource.Complex.get_by_physical_location_id")
 def test_cloud_region_resource_link_to_complex(
-    mock_complex_get_all, mock_cloud_region_property
+    mock_complex_get_by_physical_location_id, mock_cloud_region_property
 ):
     mock_cloud_region_property.return_value.complex = MagicMock()
     cloud_region_resource = CloudRegionResource(CLOUD_REGION_DATA)
     cloud_region_resource._link_to_complex("test")
-    mock_complex_get_all.assert_not_called()
+    mock_complex_get_by_physical_location_id.assert_not_called()
 
     mock_cloud_region_property.return_value.complex = None
-    mock_complex_get_all.return_value = iter(())
+    mock_complex_get_by_physical_location_id.side_effect = ResourceNotFound
     cloud_region_resource._link_to_complex("test")
     mock_cloud_region_property.return_value.link_to_complex.assert_not_called()
 
-    mock_complex_get_all.return_value = iter([Complex("test")])
+    mock_complex_get_by_physical_location_id.side_effect = None
+    mock_complex_get_by_physical_location_id.return_value = Complex("test")
     cloud_region_resource._link_to_complex("test")
     mock_cloud_region_property.return_value.link_to_complex.assert_called_once()
 

@@ -17,7 +17,9 @@
 import logging
 from typing import Any, Dict, Optional
 
+from onapsdk.aai.aai_element import Relationship  # type: ignore
 from onapsdk.aai.cloud_infrastructure import CloudRegion, Tenant  # type: ignore
+from onapsdk.aai.business import LineOfBusiness, OwningEntity  # type: ignore
 
 from .resource import Resource
 from onapsdk.exceptions import ResourceNotFound  # type: ignore
@@ -52,6 +54,33 @@ class TenantResource(Resource):
                 tenant_id=self.data["tenant-id"],
                 tenant_name=self.data["tenant-name"],
                 tenant_context=self.data.get("tenant-context"),
+            )
+
+        for lines_of_business_data in self.data.get("lines-of-business", []):
+            try:
+                line_of_business: LineOfBusiness = LineOfBusiness.get_by_name(lines_of_business_data["line-of-business"]["name"])
+            except ResourceNotFound:
+                line_of_business = LineOfBusiness.create(lines_of_business_data["line-of-business"]["name"])
+            line_of_business.add_relationship(
+                Relationship(
+                    related_to="tenant",
+                    related_link=self.tenant.url,
+                    relationship_data=[]
+                )
+            )
+
+        for owning_entities_data in self.data.get("owning-entities", []):
+            try:
+                owning_entity: OwningEntity = OwningEntity.get_by_owning_entity_name(owning_entities_data["owning-entity"]["name"])
+            except ResourceNotFound:
+                owning_entity = OwningEntity.create(owning_entities_data["owning-entity"]["name"],
+                                                    owning_entities_data["owning-entity"]["id"])
+            owning_entity.add_relationship(
+                Relationship(
+                    related_to="tenant",
+                    related_link=self.tenant.url,
+                    relationship_data=[]
+                )
             )
 
     @property
