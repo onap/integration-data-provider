@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d99ad9b0_5fa1494a",
+        "filename": "onap_data_provider/schemas/infra_1_1.schema",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 2701
+      },
+      "writtenOn": "2022-06-27T14:56:27Z",
+      "side": 1,
+      "message": "typo, hopefully",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "08db154e3fa15750e0ab8591b0c8d4fe16b43f31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68938e23_b7c4ba1a",
+        "filename": "onap_data_provider/schemas/infra_1_1.schema",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2701
+      },
+      "writtenOn": "2022-06-27T14:56:27Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 56,
+        "startChar": 6,
+        "endLine": 56,
+        "endChar": 17
+      },
+      "revId": "08db154e3fa15750e0ab8591b0c8d4fe16b43f31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45cff835_460dbe41",
+        "filename": "onap_data_provider/schemas/infra_1_1.schema",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 2701
+      },
+      "writtenOn": "2022-06-27T14:56:27Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 59,
+        "startChar": 10,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "08db154e3fa15750e0ab8591b0c8d4fe16b43f31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d87d788_d4c115ad",
+        "filename": "onap_data_provider/schemas/infra_1_1.schema",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 2701
+      },
+      "writtenOn": "2022-06-27T14:56:27Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "08db154e3fa15750e0ab8591b0c8d4fe16b43f31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
