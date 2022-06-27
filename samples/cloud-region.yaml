@@ -2,7 +2,7 @@
 # Cloud region resource is one of the biggest to describe (if you want to configure it with OpenStack)
 # Please fill the data based on your OpenStack instance RC v3 file (ask OpenStack admin).
 #
-odpSchemaVersion: 1.0
+odpSchemaVersion: 1.1
 resources:
   cloud-regions:
     - cloud-region:
@@ -25,3 +25,16 @@ resources:
             service-url: http://127.0.0.1:5000/v3
             cloud-domain: Default
             default-tenant: default-tenant
+        projects:
+          - project:
+              name: test-project-1234
+        tenants:
+          - tenant-id: "12345"
+            tenant-name: test-tenant
+            lines-of-business:
+              - line-of-business:
+                  name: test-tenant-lob
+            owning-entities:
+              - owning-entity:
+                  name: test-oe
+                  id: test-oe

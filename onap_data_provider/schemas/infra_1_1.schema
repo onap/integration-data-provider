@@ -19,6 +19,64 @@ properties:
               - service-description
         required:
           - aai-service
+  owning-entities: &owning_entities
+    type: array
+    items:
+      type: object
+      properities:
+        owning-entity:
+          type: object
+          properties:
+            name:
+              type: string
+            id:
+              type: string
+          required:
+            - name
+      required:
+        - owning-entity
+  projects: &projects
+    type: array
+    items:
+      type: object
+      properties:
+        project:
+          type: object
+          properities:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - project
+  platforms:
+    type: array
+    items:
+      type: object
+      properities:
+        platform:
+          type: object
+          properities:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - platform
+  lines-of-business: &lines_of_business
+    type: array
+    items:
+      type: object
+      properties:
+        line-of-business:
+          type: object
+          properities:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - line-of-business
   complexes:
     type: array
     items:
@@ -90,6 +148,8 @@ properties:
                     type: string
                   tenant-context:
                     type: string
+                  lines_of_business: *lines_of_business
+                  owning_entities: *owning_entities
                 required:
                   - tenant-id
                   - tenant-name
@@ -138,6 +198,7 @@ properties:
                 required:
                   - availability-zone-name
                   - hypervisor-type
+            projects: *projects
           required:
             - cloud-owner
             - cloud-region-id
@@ -500,62 +561,6 @@ properties:
               - platform
               - line_of_business
               - aai_service
-  owning-entities:
-    type: array
-    items:
-      type: object
-      properities:
-        owning-entity:
-          type: object
-          properties:
-            name:
-              type: string
-          required:
-            - name
-      required:
-        - owning-entity
-  projects:
-    type: array
-    items:
-      type: object
-      properties:
-        project:
-          type: object
-          properities:
-            name:
-              type: string
-          required:
-            - name
-      required:
-        - project
-  platforms:
-    type: array
-    items:
-      type: object
-      properities:
-        platform:
-          type: object
-          properities:
-            name:
-              type: string
-          required:
-            - name
-      required:
-        - platform
-  lines-of-business:
-    type: array
-    items:
-      type: object
-      properties:
-        line-of-business:
-          type: object
-          properities:
-            name:
-              type: string
-          required:
-            - name
-      required:
-        - line-of-business
   msb-k8s-definitions:
     type: array
     items:
