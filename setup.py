@@ -21,7 +21,7 @@ with open("README.md", "r", encoding="utf-8") as readme:
 
 setuptools.setup(
     name="onap_data_provider",
-    version="0.5.0",
+    version="0.6.0",
     author="Michal Jagiello <michal.jagiello@t-mobile.pl>, Piotr Stanior <piotr.stanior@t-mobile.pl>",
     description="Tool to provide data for ONAP instances",
     long_description=long_description,
