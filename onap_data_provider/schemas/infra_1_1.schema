@@ -612,3 +612,68 @@ properties:
               - file-path
         required:
           - data-dictionaries
+  blueprints:
+    type: array
+    items:
+      - type: object
+        properties:
+          blueprint:
+            type: object
+            properites:
+              blueprint-file-path:
+              type: string
+            required:
+              - blueprint-file-path
+        required:
+          - blueprint
+  blueprint-resource-templates:
+    type: array
+    items:
+      - type: object
+        properties:
+          blueprint-resource-template:
+            type: object
+            properties:
+              blueprint-name:
+                type: string
+              blueprint-version:
+                type: string
+              artifact-name:
+                type: string
+              resolution-key:
+                type: string
+              resource-type:
+                type: string
+              resource-id:
+                type: string
+              data:
+                type: string
+              data-file:
+                type: string
+            anyOf:
+              - required:
+                - blueprint-name
+                - blueprint-version
+                - artifact-name
+                - resolution-key
+                - data
+              - required:
+                - blueprint-name
+                - blueprint-version
+                - artifact-name
+                - resource-type
+                - resource-id
+                - data
+              - required:
+                - blueprint-name
+                - blueprint-version
+                - artifact-name
+                - resolution-key
+                - data-file
+              - required:
+                - blueprint-name
+                - blueprint-version
+                - artifact-name
+                - resource-type
+                - resource-id
+                - data-file

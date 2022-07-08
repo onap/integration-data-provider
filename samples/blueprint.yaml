@@ -1,0 +1,29 @@
+# Blueprint sample
+odpSchemaVersion: 1.1
+resources:
+  data-dictionaries-sets:
+    - data-dictionaries:
+        file-path: cba-dd.json
+  blueprints:
+    - blueprint:
+        blueprint-file-path: BASIC_VM_enriched.zip
+  blueprint-resource-templates:
+    - blueprint-resource-template:
+        blueprint-name: ubuntu20
+        blueprint-version: 1.0.0
+        artifact-name: test-dp
+        resolution-key: test-resolution-key
+        data: "{\"test\": \"me\"}"
+    - blueprint-resource-template:
+        blueprint-name: ubuntu20
+        blueprint-version: 1.0.0
+        artifact-name: test-dp
+        resource-type: test-resource-type
+        resource-id: test-resource-id
+        data: "{\"test\": \"me\"}"
+    - blueprint-resource-template:
+        blueprint-name: ubuntu20
+        blueprint-version: 1.0.0
+        artifact-name: test-dp
+        resolution-key: test-resolution-key-from-file
+        data-file: resource-template-data.json
