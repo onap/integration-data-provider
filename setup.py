@@ -35,7 +35,7 @@ setuptools.setup(
             "onap-data-provider=onap_data_provider.data_provider:run",
         ]
     },
-    install_requires=["onapsdk==10.0.1", "PyYAML~=5.4.1", "jsonschema==4.4.0"],
+    install_requires=["onapsdk==10.1.0", "PyYAML~=5.4.1", "jsonschema==4.4.0"],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Programming Language :: Python",
