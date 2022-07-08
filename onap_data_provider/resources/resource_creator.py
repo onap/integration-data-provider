@@ -22,9 +22,12 @@ import typing
 from abc import ABC
 
 from .aai_service_resource import AaiServiceResource
+from .blueprint_resource import BlueprintResource
+from .cds_resource_template import BlueprintResourceTemplateResource
 from .cloud_region_resource import CloudRegionResource
 from .complex_resource import ComplexResource
 from .customer_resource import CustomerResource
+from .data_dictionary_resource import DataDictionarySetResource
 from .line_of_business_resource import LineOfBusinessResource
 from .msb_k8s_definition import MsbK8SDefinitionResource
 from .owning_entity_resource import OwningEntityResource
@@ -38,7 +41,6 @@ from .service_instance_resource import (
 from .vendor_resource import VendorResource
 from .vnf_resource import VnfResource
 from .vsp_resource import VspResource
-from .data_dictionary_resource import DataDictionarySetResource
 from ..versions import VersionsEnum
 
 if typing.TYPE_CHECKING:
@@ -134,6 +136,12 @@ class ResourceCreator(ABC):
             VersionsEnum.V1_0: DataDictionarySetResource,
             VersionsEnum.V1_1: DataDictionarySetResource,
         },
+        "blueprint": {
+            VersionsEnum.V1_1: BlueprintResource,
+        },
+        "blueprint-resource-template": {
+            VersionsEnum.V1_1: BlueprintResourceTemplateResource,
+        }
     }
 
     @classmethod
@@ -164,6 +172,8 @@ class ResourceCreator(ABC):
          - owning-entity: OwningEntityResource
          - msb-k8s-definition: MsbK8SDefinitionResource
          - data-dictionaries: DataDictionarySetResource
+         - blueprints: BlueprintResource
+         - blueprint-resource-template: BlueprintResourceTemplateResource
 
         Args:
             resource_type (str): Resource type to create
