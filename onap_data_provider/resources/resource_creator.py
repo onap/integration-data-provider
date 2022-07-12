@@ -28,6 +28,7 @@ from .cloud_region_resource import CloudRegionResource
 from .complex_resource import ComplexResource
 from .customer_resource import CustomerResource
 from .data_dictionary_resource import DataDictionarySetResource
+from .cps_resource import AnchorResource, DataspaceResource, SchemaSetResource
 from .line_of_business_resource import LineOfBusinessResource
 from .msb_k8s_definition import MsbK8SDefinitionResource
 from .owning_entity_resource import OwningEntityResource
@@ -141,6 +142,15 @@ class ResourceCreator(ABC):
         },
         "blueprint-resource-template": {
             VersionsEnum.V1_1: BlueprintResourceTemplateResource,
+        },
+        "cps-dataspace": {
+            VersionsEnum.V1_1: DataspaceResource
+        },
+        "cps-schema-set": {
+            VersionsEnum.V1_1: SchemaSetResource
+        },
+        "cps-anchor": {
+            VersionsEnum.V1_1: AnchorResource
         }
     }
 
@@ -174,6 +184,9 @@ class ResourceCreator(ABC):
          - data-dictionaries: DataDictionarySetResource
          - blueprints: BlueprintResource
          - blueprint-resource-template: BlueprintResourceTemplateResource
+         - cps-dataspace: DataspaceResource
+         - cps-schema-set: SchemaSetResource
+         - cps-anchor: AnchorResource
 
         Args:
             resource_type (str): Resource type to create

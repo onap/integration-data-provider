@@ -677,3 +677,81 @@ properties:
                 - resource-type
                 - resource-id
                 - data-file
+  cps-dataspaces:
+    type: array
+    items:
+      - type: object
+        properties:
+          cps-dataspace:
+            type: object
+            properties:
+              dataspace-name:
+                type: string
+              schema-sets:
+                type: array
+                items:
+                  - type: object
+                    properties:
+                      schema-set-name:
+                        type: string
+                      schema-set-file:
+                        type: string
+                    required:
+                      - schema-set-name
+                      - schema-set-file
+              anchors:
+                type: array
+                items:
+                  - type: object
+                    properties:
+                      anchor-name:
+                        type: string
+                      schema-set-name:
+                        type: string
+                    required:
+                      - anchor-name
+                      - schema-set-name
+            required:
+              - dataspace-name
+        required:
+          - cps-dataspace
+  cps-schema-sets:
+    type: array
+    items:
+      - type: object
+        properties:
+          cps-schema-set:
+            type: object
+            properties:
+              schema-set-name:
+                type: string
+              schema-set-file:
+                type: string
+              dataspace-name:
+                type: string
+            required:
+              - schema-set-name
+              - schema-set-file
+              - dataspace-name
+        required:
+          - cps-schema-set
+  cps-anchors:
+    type: array
+    items:
+      - type: object
+        properties:
+          cps-anchor:
+            type: object
+            properties:
+              anchor-name:
+                type: string
+              dataspace-name:
+                type: string
+              schema-set-name:
+                type: string
+            required:
+              - anchor-name
+              - dataspace-name
+              - schema-set-name
+        required:
+          - cps-anchor
