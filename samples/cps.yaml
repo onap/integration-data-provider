@@ -1,0 +1,22 @@
+# CPS Sample
+odpSchemaVersion: 1.1
+resources:
+  cps-dataspaces:
+    - cps-dataspace:
+        dataspace-name: test-odp-dataspace
+        schema-sets:
+          - schema-set-name: &schema-set-name test-odp-schema-set
+            schema-set-file: samples/cps-bookstore.yang
+        anchors:
+          - anchor-name: test-odp-anchor
+            schema-set-name: *schema-set-name
+  cps-schema-sets:
+    - cps-schema-set:
+        schema-set-name: test-odp-schemaset
+        dataspace-name: test-odp-dataspace
+        schema-set-file: samples/cps-bookstore.yang
+  cps-anchors:
+    - cps-anchor:
+        anchor-name: test-odp-anchor
+        schema-set-name: test-odp-schemaset
+        dataspace-name: test-odp-dataspace
