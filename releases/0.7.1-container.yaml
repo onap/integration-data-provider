@@ -1,0 +1,8 @@
+distribution_type: 'container'
+container_release_tag: '0.7.1'
+project: 'integration/data-provider'
+log_dir: 'integration-data-provider-docker-merge-master/45'
+ref: f833d3d2915b678d02ed81650b6154d29cd56492
+containers:
+    - name: 'data-provider'
+      version: 'latest'
