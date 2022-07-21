@@ -123,7 +123,7 @@ class CustomerResource(Resource):
             logging.debug("Create ServiceSubscription %s", self.data["service-type"])
             if not self.exists:
                 self._service_subscription = self._customer.subscribe_service(
-                    Service(self.data["service-type"])
+                    self.data["service-type"]
                 )
 
             for tenant_cloud_region_data in self.data.get("tenants", []):
