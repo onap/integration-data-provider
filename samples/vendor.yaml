@@ -1,8 +1,8 @@
 # Vendor sample
 # Using that file you will create one SDC Vendor resource with "sample-vendor" name
 #
-odpSchemaVersion: 1.0
+odpSchemaVersion: 2.0
 resources:
   vendors:
     - vendor:
-        name: sample-vendor
+        name: odp_sample-vendor_23
