@@ -1,7 +1,7 @@
 # A&AI business sample
 # Creates one owning entity, project, platform and line of business
 #
-odpSchemaVersion: 1.0
+odpSchemaVersion: 2.0
 resources:
   owning_entities:
     - owning-entity:
