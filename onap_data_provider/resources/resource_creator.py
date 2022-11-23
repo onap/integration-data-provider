@@ -61,96 +61,117 @@ class ResourceCreator(ABC):
             VersionsEnum.NONE: AaiServiceResource,
             VersionsEnum.V1_0: AaiServiceResource,
             VersionsEnum.V1_1: AaiServiceResource,
+            VersionsEnum.V2_0: AaiServiceResource,
         },
         "cloud-region": {
             VersionsEnum.NONE: CloudRegionResource,
             VersionsEnum.V1_0: CloudRegionResource,
             VersionsEnum.V1_1: CloudRegionResource,
+            VersionsEnum.V2_0: CloudRegionResource,
         },
         "complex": {
             VersionsEnum.NONE: ComplexResource,
             VersionsEnum.V1_0: ComplexResource,
             VersionsEnum.V1_1: ComplexResource,
+            VersionsEnum.V2_0: ComplexResource,
         },
         "customer": {
             VersionsEnum.NONE: CustomerResource,
             VersionsEnum.V1_0: CustomerResource,
             VersionsEnum.V1_1: CustomerResource,
+            VersionsEnum.V2_0: CustomerResource,
         },
         "vsp": {
             VersionsEnum.NONE: VspResource,
             VersionsEnum.V1_0: VspResource,
             VersionsEnum.V1_1: VspResource,
+            VersionsEnum.V2_0: VspResource,
         },
         "service": {
             VersionsEnum.NONE: ServiceResource,
             VersionsEnum.V1_0: ServiceResource,
             VersionsEnum.V1_1: ServiceResource,
+            VersionsEnum.V2_0: ServiceResource,
         },
         "vendor": {
             VersionsEnum.NONE: VendorResource,
             VersionsEnum.V1_0: VendorResource,
             VersionsEnum.V1_1: VendorResource,
+            VersionsEnum.V2_0: VendorResource,
         },
         "pnf": {
             VersionsEnum.NONE: PnfResource,
             VersionsEnum.V1_0: PnfResource,
             VersionsEnum.V1_1: PnfResource,
+            VersionsEnum.V2_0: PnfResource,
         },
         "vnf": {
             VersionsEnum.NONE: VnfResource,
             VersionsEnum.V1_0: VnfResource,
             VersionsEnum.V1_1: VnfResource,
+            VersionsEnum.V2_0: VnfResource,
         },
         "service-instance": {
             VersionsEnum.NONE: ServiceInstanceResource,
             VersionsEnum.V1_0: ServiceInstanceResource,
             VersionsEnum.V1_1: ServiceInstanceResource_1_1,
+            VersionsEnum.V2_0: ServiceInstanceResource_2_0,
         },
         "line-of-business": {
             VersionsEnum.NONE: LineOfBusinessResource,
             VersionsEnum.V1_0: LineOfBusinessResource,
             VersionsEnum.V1_1: LineOfBusinessResource,
+            VersionsEnum.V2_0: LineOfBusinessResource,
         },
         "project": {
             VersionsEnum.NONE: ProjectResource,
             VersionsEnum.V1_0: ProjectResource,
             VersionsEnum.V1_1: ProjectResource,
+            VersionsEnum.V2_0: ProjectResource,
         },
         "platform": {
             VersionsEnum.NONE: PlatformResource,
             VersionsEnum.V1_0: PlatformResource,
             VersionsEnum.V1_1: PlatformResource,
+            VersionsEnum.V2_0: PlatformResource,
         },
         "owning-entity": {
             VersionsEnum.NONE: OwningEntityResource,
             VersionsEnum.V1_0: OwningEntityResource,
             VersionsEnum.V1_1: OwningEntityResource,
+            VersionsEnum.V2_0: OwningEntityResource,
         },
         "msb-k8s-definition": {
             VersionsEnum.NONE: MsbK8SDefinitionResource,
             VersionsEnum.V1_0: MsbK8SDefinitionResource,
             VersionsEnum.V1_1: MsbK8SDefinitionResource,
+            VersionsEnum.V2_0: MsbK8SDefinitionResource,
         },
         "data-dictionaries": {
             VersionsEnum.NONE: DataDictionarySetResource,
             VersionsEnum.V1_0: DataDictionarySetResource,
             VersionsEnum.V1_1: DataDictionarySetResource,
+            VersionsEnum.V2_0: DataDictionarySetResource,
         },
         "blueprint": {
             VersionsEnum.V1_1: BlueprintResource,
+            VersionsEnum.V2_0: BlueprintResource,
         },
         "blueprint-resource-template": {
             VersionsEnum.V1_1: BlueprintResourceTemplateResource,
+            VersionsEnum.V2_0: BlueprintResourceTemplateResource,
         },
         "cps-dataspace": {
             VersionsEnum.V1_1: DataspaceResource
+            VersionsEnum.V2_0: DataspaceResource
         },
         "cps-schema-set": {
             VersionsEnum.V1_1: SchemaSetResource
+            VersionsEnum.V2_0: SchemaSetResource
         },
         "cps-anchor": {
             VersionsEnum.V1_1: AnchorResource
+            VersionsEnum.V2_0: AnchorResource
         }
     }
 
