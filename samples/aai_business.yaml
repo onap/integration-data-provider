@@ -1,17 +1,17 @@
 # A&AI business sample
 # Creates one owning entity, project, platform and line of business
 #
-odpSchemaVersion: 1.0
+odpSchemaVersion: 2.0
 resources:
   owning_entities:
     - owning-entity:
-        name: oran_owner
+        name: odp_oran_owner_23_12
   projects:
     - project:
-        name: oran_town
+        name: odp_oran_town_23_12
   platforms:
     - platform:
-        name: oran_platform
+        name: odp_oran_platform_23
   lines-of-business:
     - line-of-business:
-        name: oran_lob
+        name: odp_oran_lob_23

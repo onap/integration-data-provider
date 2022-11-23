@@ -63,3 +63,6 @@ def test_config_parser_versioning():
         [parsed_objects[1].data['cloud-owner'], 'TENANT', '1'])
     assert parsed_objects[1].data['tenants'][1]['tenant-id'] == ''.join(
         [parsed_objects[1].data['cloud-owner'], '-', 'TENANT', '-', '2'])
+
+    parser = ConfigParser([Path("tests/test-data-2-0-version.yaml")])
+    assert parser.configs[0].version.value.version_number == "2.0"

@@ -18,7 +18,7 @@
 from typing import Any, Dict
 
 import yaml
-from jsonschema import validate  # type: ignore
+from jsonschema import validate
 
 from .versions import VersionsEnum
 

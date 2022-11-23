@@ -36,6 +36,11 @@ class VersionsEnum(Enum):
         schema_path=Path(Path(__file__).parent, "schemas/infra.schema"),
         deprecated=False,
     )
+    V2_0 = Version(
+        version_number="2.0",
+        schema_path=Path(Path(__file__).parent, "schemas/infra_2_0.schema"),
+        deprecated=False,
+    )
     NONE = Version(
         version_number="None",
         schema_path=Path(Path(__file__).parent, "schemas/infra.schema"),
