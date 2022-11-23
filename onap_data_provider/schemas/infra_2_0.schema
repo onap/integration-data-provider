@@ -1,0 +1,757 @@
+---
+"$schema": "https://json-schema.org/draft/2020-12/schema"
+type: object
+properties:
+  aai-services:
+    type: array
+    prefixItems:
+      - type: object
+        properties:
+          aai-service:
+            type: object
+            properties:
+              service-id:
+                type: string
+              service-description:
+                type: string
+            required:
+              - service-id
+              - service-description
+        required:
+          - aai-service
+  owning-entities: &owning_entities
+    type: array
+    prefixItems:
+      type: object
+      properties:
+        owning-entity:
+          type: object
+          properties:
+            name:
+              type: string
+            $anchor:
+              type: string
+          required:
+            - name
+      required:
+        - owning-entity
+  projects: &projects
+    type: array
+    prefixItems:
+      type: object
+      properties:
+        project:
+          type: object
+          properties:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - project
+  platforms:
+    type: array
+    prefixItems:
+      type: object
+      properties:
+        platform:
+          type: object
+          properties:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - platform
+  lines-of-business: &lines_of_business
+    type: array
+    prefixItems:
+      type: object
+      properties:
+        line-of-business:
+          type: object
+          properties:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - line-of-business
+  complexes:
+    type: array
+    prefixItems:
+      type: object
+      properties:
+        complex:
+          type: object
+          properties:
+            physical-location-id:
+              type: string
+            complex-name:
+              type: string
+            data-center-code:
+              type: string
+            identity-url:
+              type: string
+            physical-location-type:
+              type: string
+            street1:
+              type: string
+            street2:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            postal-code:
+              type: string
+            country:
+              type: string
+            region:
+              type: string
+            latitude:
+              type: string
+            longitude:
+              type: string
+            elevation:
+              type: string
+            lata:
+              type: string
+          required:
+            - physical-location-id
+      required:
+        - complex
+  cloud-regions:
+    type: array
+    prefixItems:
+      type: object
+      properties:
+        cloud-region:
+          type: object
+          properties:
+            cloud-owner:
+              type: string
+            cloud-region-id:
+              type: string
+            orchestration-disabled:
+              type: boolean
+            in-maint:
+              type: boolean
+            tenants:
+              type: array
+              prefixItems:
+                type: object
+                properties:
+                  tenant-id:
+                    type: string
+                  tenant-name:
+                    type: string
+                  tenant-context:
+                    type: string
+                  lines_of_business: *lines_of_business
+                  owning_entities: *owning_entities
+                required:
+                  - tenant-id
+                  - tenant-name
+            esr-system-infos:
+              type: array
+              prefixItems:
+                type: object
+                properties:
+                  esr-system-info-id:
+                    type: string
+                  user-name:
+                    type: string
+                  password:
+                    type: string
+                  system-type:
+                    type: string
+                  service-url:
+                    type: string
+                  cloud-domain:
+                    type: string
+                  default-tenant:
+                    type: string
+                required:
+                  - esr-system-info-id
+                  - user-name
+                  - password
+                  - system-type
+                  - service-url
+                  - cloud-domain
+            complex:
+              type: object
+              properties:
+                physical-location-id:
+                  type: string
+              required:
+                - physical-location-id
+            availability-zones:
+              type: array
+              prefixItems:
+                type: object
+                properties:
+                  availability-zone-name:
+                    type: string
+                  hypervisor-type:
+                    type: string
+                required:
+                  - availability-zone-name
+                  - hypervisor-type
+            projects: *projects
+          required:
+            - cloud-owner
+            - cloud-region-id
+            - orchestration-disabled
+            - in-maint
+      required:
+        - cloud-region
+  customers:
+    type: array
+    prefixItems:
+      type: object
+      properties:
+        customer:
+          type: object
+          properties:
+            global-customer-id:
+              type: string
+            subscriber-name:
+              type: string
+            subscriber-type:
+              type: string
+            service-subscriptions:
+              type: array
+              prefixItems:
+                type: object
+                properties:
+                  service-type:
+                    type: string
+                  tenants:
+                    type: array
+                    prefixItems:
+                      type: object
+                      properties:
+                        tenant-id:
+                          type: string
+                        cloud-owner:
+                          type: string
+                        cloud-region-id:
+                          type: string
+                      required:
+                        - tenant-id
+                        - cloud-owner
+                        - cloud-region-id
+                required:
+                  - service-type
+          required:
+            - global-customer-id
+            - subscriber-name
+            - subscriber-type
+      required:
+        - customer
+  vendors:
+    type: array
+    prefixItems:
+      type: object
+      properties:
+        vendor:
+          type: object
+          properties:
+            name:
+              type: string
+          required:
+            - name
+      required:
+        - vendor
+  vsps:
+    type: array
+    prefixItems:
+      type: object
+      properties:
+        vsp:
+          type: object
+          properties:
+            name:
+              type: string
+            vendor:
+              type: string
+            package:
+              type: string
+          required:
+            - name
+            - vendor
+            - package
+      required:
+        - vsp
+  services:
+    type: array
+    prefixItems:
+      type: object
+      properties:
+        service:
+          type: object
+          properties:
+            name:
+              type: string
+            resources:
+              type: array
+              prefixItems:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  properties: # Adding a prop to a component is senseless.
+                    type: array
+                    prefixItems:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        value:
+                          type:
+                            - string
+                            - number
+                            - boolean
+                      required:
+                        - name
+                        - value
+                required:
+                  - name
+                  - type
+            properties: &props
+              type: array
+              prefixItems:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  value:
+                    type:
+                      - string
+                      - number
+                      - boolean
+                anyOf:
+                  - required:
+                      - name
+                      - type
+                  - required:
+                      - name
+                      - value
+            inputs: &inputs
+              type: array
+              prefixItems:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  nested-input:
+                    type: boolean
+                  resource-property:
+                    type: boolean
+                  resource:
+                    type: string
+                  value:
+                    type:
+                      - string
+                      - number
+                      - boolean
+                anyOf:
+                  - required:
+                      - name
+                      - type
+                  - required:
+                      - name
+                      - value
+                  - required:
+                      - name
+                      - nested-input
+                      - resource
+          required:
+            - name
+      required:
+        - service
+  pnfs:
+      type: array
+      prefixItems:
+        type: object
+        properties:
+          pnf:
+            type: object
+            properties:
+              name:
+                type: string
+              vendor:
+                type: string
+              vsp:
+                type: string
+              category:
+                type: string
+              subcategory:
+                type: string
+              vendor:
+                type: string
+              deployment_artifact:
+                type: object
+                properties:
+                  artifact_type:
+                    type: string
+                  artifact_name:
+                    type: string
+                  artifact_label:
+                    type: string
+                  artifact_file_name:
+                    type: string
+                required:
+                  - artifact_type
+                  - artifact_name
+                  - artifact_label
+                  - artifact_file_name
+              properties: *props
+              inputs: *props
+              resources:
+                type: array
+                prefixItems:
+                  - type: object
+                    properties:
+                      xnf_type:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                      - xnf_type
+                      - name
+            required:
+              - name
+        required:
+          - pnf
+  vnfs:
+      type: array
+      prefixItems:
+        type: object
+        properties:
+          vnf:
+            type: object
+            properties:
+              name:
+                type: string
+              vsp:
+                type: string
+              category:
+                type: string
+              subcategory:
+                type: string
+              vendor:
+                type: string
+              deployment_artifact:
+                type: object
+                properties:
+                  artifact_type:
+                    type: string
+                  artifact_name:
+                    type: string
+                  artifact_label:
+                    type: string
+                  artifact_file_name:
+                    type: string
+                required:
+                  - artifact_type
+                  - artifact_name
+                  - artifact_label
+                  - artifact_file_name
+              properties: *props
+              inputs: *props
+              resources:
+                type: array
+                prefixItems:
+                  - type: object
+                    properties:
+                      xnf_type:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                      - xnf_type
+                      - name
+            required:
+              - name
+        required:
+          - vnf
+  service-instances:
+      type: array
+      prefixItems:
+        type: object
+        properties:
+          service-instance:
+            type: object
+            properties:
+              service_instance_name:
+                type: string
+              service_name:
+                type: string
+              cloud_region:
+                type: string
+              customer_id:
+                type: string
+              owning_entity:
+                type: string
+              project:
+                type: string
+              platform:
+                type: string
+              line_of_business:
+                type: string
+              cloud_region_id:
+                type: string
+              cloud_owner:
+                type: string
+              timeout:
+                type: number
+                minimum: 1
+                maximum: 99999
+              aai_service:
+                type: string
+              tenant_id:
+                type: string
+              tenant_name:
+                type: string
+              service_subscription_type:
+                type: string
+              instantiation_parameters:
+                type: array
+                prefixItems:
+                  type: object
+                  properties:
+                    vnf_name:
+                      type: string
+                    sec_group:
+                      type: string
+                    public_net_id:
+                      type: string
+                    onap_private_net_id:
+                      type: string
+                    onap_private_subnet_id:
+                      type: string
+                    image_name:
+                      type: string
+                    flavor_name:
+                      type: string
+                    install_script_version:
+                      type: string
+                    demo_artifacts_version:
+                      type: string
+                    cloud_env:
+                      type: string
+                    aic-cloud-region:
+                      type: string
+                    pub_key:
+                      type: string
+            required:
+              - service_instance_name
+              - service_name
+              - customer_id
+              - owning_entity
+              - project
+              - platform
+              - line_of_business
+              - aai_service
+  msb-k8s-definitionss:
+    type: array
+    prefixItems:
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        chart-name:
+          type: string
+        description:
+          type: string
+        artifact:
+          type: string
+        profiles:
+          type: array
+          prefixItems:
+            - type: object
+              properties:
+                name:
+                  type: string
+                namespace:
+                  type: string
+                k8s-version:
+                  type: string
+                artifact:
+                  type: string
+              required:
+                - name
+                - namespace
+                - k8s-version
+                - artifact
+      required:
+        - name
+        - version
+        - artifact
+  data-dictionaries-sets:
+    type: array
+    prefixItems:
+      - type: object
+        properties:
+          data-dictionaries:
+            type: object
+            properties:
+              file-path:
+                type: string
+            required:
+              - file-path
+        required:
+          - data-dictionaries
+  blueprints:
+    type: array
+    prefixItems:
+      - type: object
+        properties:
+          blueprint:
+            type: object
+            properites:
+              blueprint-file-path:
+              type: string
+            required:
+              - blueprint-file-path
+        required:
+          - blueprint
+  blueprint-resource-templates:
+    type: array
+    prefixItems:
+      - type: object
+        properties:
+          blueprint-resource-template:
+            type: object
+            properties:
+              blueprint-name:
+                type: string
+              blueprint-version:
+                type: string
+              artifact-name:
+                type: string
+              resolution-key:
+                type: string
+              resource-type:
+                type: string
+              resource-id:
+                type: string
+              data:
+                type: string
+              data-file:
+                type: string
+            anyOf:
+              - required:
+                - blueprint-name
+                - blueprint-version
+                - artifact-name
+                - resolution-key
+                - data
+              - required:
+                - blueprint-name
+                - blueprint-version
+                - artifact-name
+                - resource-type
+                - resource-id
+                - data
+              - required:
+                - blueprint-name
+                - blueprint-version
+                - artifact-name
+                - resolution-key
+                - data-file
+              - required:
+                - blueprint-name
+                - blueprint-version
+                - artifact-name
+                - resource-type
+                - resource-id
+                - data-file
+  cps-dataspaces:
+    type: array
+    prefixItems:
+      - type: object
+        properties:
+          cps-dataspace:
+            type: object
+            properties:
+              dataspace-name:
+                type: string
+              schema-sets:
+                type: array
+                prefixItems:
+                  - type: object
+                    properties:
+                      schema-set-name:
+                        type: string
+                      schema-set-file:
+                        type: string
+                    required:
+                      - schema-set-name
+                      - schema-set-file
+              anchors:
+                type: array
+                prefixItems:
+                  - type: object
+                    properties:
+                      anchor-name:
+                        type: string
+                      schema-set-name:
+                        type: string
+                    required:
+                      - anchor-name
+                      - schema-set-name
+            required:
+              - dataspace-name
+        required:
+          - cps-dataspace
+  cps-schema-sets:
+    type: array
+    prefixItems:
+      - type: object
+        properties:
+          cps-schema-set:
+            type: object
+            properties:
+              schema-set-name:
+                type: string
+              schema-set-file:
+                type: string
+              dataspace-name:
+                type: string
+            required:
+              - schema-set-name
+              - schema-set-file
+              - dataspace-name
+        required:
+          - cps-schema-set
+  cps-anchors:
+    type: array
+    prefixItems:
+      - type: object
+        properties:
+          cps-anchor:
+            type: object
+            properties:
+              anchor-name:
+                type: string
+              dataspace-name:
+                type: string
+              schema-set-name:
+                type: string
+            required:
+              - anchor-name
+              - dataspace-name
+              - schema-set-name
+        required:
+          - cps-anchor
