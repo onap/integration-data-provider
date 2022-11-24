@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7393539_46a2e2bc",
+        "filename": "onap_data_provider/schemas/infra_2_0.schema",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-11-24T07:44:06Z",
+      "side": 1,
+      "message": "schould be \n\"$schema\": \"https://json-schema.org/draft/2020-12/schema\"\nif we want to use the latest one",
+      "revId": "f2f05dc9939692ac71e0b3c401587293e620dfb0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
