@@ -20,7 +20,8 @@ from abc import ABC
 from typing import Any, Dict
 
 from onapsdk.cps import Anchor, Dataspace, SchemaSet  # type: ignore
-from onapsdk.exceptions import APIError, ResourceNotFound  # type: ignore
+from onapsdk.exceptions import APIError, ResourceNotFound
+from yaml import Node  # type: ignore
 
 from onap_data_provider.resources.resource import Resource
 
@@ -186,3 +187,59 @@ class DataspaceResource(Resource):
                                               anchor_data["anchor-name"])
             else:
                 logging.warning("Anchor %s already exists", anchor_data["anchor-name"])
+
+class AnchorNodeResource(DataspaceSubresource):
+    """Anchor node resource class
+
+    Creates CPS anchor node
+    """
+
+    def __init__(self, data: Dict[str, Any]) -> None:
+        """Initialize anchor resource"""
+        super().__init__(data)
+
+        self._anchor: Anchor = None
+        self._node: Node = None
+
+    def create(self) -> None:
+        """Create anchor node.
+
+        Raises:
+            ValueError: Schema set doesn't exist
+
+        """
+        if not self.schema_set:
+            raise ValueError("Schema set %s does not exist, create it first", self.data["schema-set-name"])
+        if not self.node:
+            self._anchor.create_node(self.data["anchor-node-name"])
+
+    @property
+    def node(self) -> Anchor:
+        """Anchor node property.
+
+        Tries to get anchor node from dataspace.
+
+        Returns:
+            Anchor: Anchor node object, if anchor node already exists. None otherwise.
+
+        """
+        if not self._node:
+            try:
+                path = input("Enter Anchor node xpath: ") or "/"
+                self._node = Anchor.get_node(self.schema_set, path)
+            except APIError as api_error:
+                if "Node not found" in str(api_error):
+                    return None
+                else:
+                    raise
+        return self._node
+
+    @node.setter
+    def node(self, node: Node) -> None:
+        """Set anchor node.
+
+        Args:
+            node: Anchor node object.
+
+        """
+        self._node = node
