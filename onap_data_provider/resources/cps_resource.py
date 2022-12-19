@@ -14,15 +14,15 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 """
-
 import logging
 from abc import ABC
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from onapsdk.cps import Anchor, Dataspace, SchemaSet  # type: ignore
 from onapsdk.exceptions import APIError, ResourceNotFound  # type: ignore
-
+from yaml import Node
 from onap_data_provider.resources.resource import Resource
+
 
 
 class DataspaceSubresource(Resource, ABC):
@@ -186,3 +186,45 @@ class DataspaceResource(Resource):
                                               anchor_data["anchor-name"])
             else:
                 logging.warning("Anchor %s already exists", anchor_data["anchor-name"])
+
+class AnchorNodeResource(DataspaceSubresource):
+    """Anchor node resource class
+
+    Creates CPS anchor node
+    """
+
+    def __init__(self, data: Dict[str, Any]) -> None:
+        """Initialize anchor resource"""
+        super().__init__(data)
+
+        self._anchor: Anchor = None
+    def create(self) -> None:
+        """Create anchor node.
+
+        Raises:
+            ValueError: Anchor doesn't exist
+
+        """
+        if not self.anchor:
+            raise ValueError("Anchor %s does not exist, create it first", self.data["anchor-name"])
+        self.anchor.create_node(self.data.get("node-data"))
+
+    @property
+    def anchor(self) -> Anchor:
+        """Anchor property.
+
+        Tries to get anchor from dataspace.
+
+        Returns:
+            Anchor: Anchor object, if anchor already exists. None otherwise.
+
+        """
+        if not self._anchor:
+            try:
+                self._anchor = self.dataspace.get_anchor(self.data["anchor-name"])
+            except APIError as api_error:
+                if "Anchor not found" in str(api_error):
+                    return None
+                else:
+                    raise
+        return self._anchor

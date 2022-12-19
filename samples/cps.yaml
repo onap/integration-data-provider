@@ -1,22 +1,27 @@
 # CPS Sample
 odpSchemaVersion: 1.1
 resources:
-  cps-dataspaces:
-    - cps-dataspace:
-        dataspace-name: test-odp-dataspace
-        schema-sets:
-          - schema-set-name: &schema-set-name test-odp-schema-set
-            schema-set-file: samples/cps-bookstore.yang
-        anchors:
-          - anchor-name: test-odp-anchor
-            schema-set-name: *schema-set-name
-  cps-schema-sets:
-    - cps-schema-set:
-        schema-set-name: test-odp-schemaset
-        dataspace-name: test-odp-dataspace
-        schema-set-file: samples/cps-bookstore.yang
-  cps-anchors:
-    - cps-anchor:
+  # cps-dataspaces:
+  #   - cps-dataspace:
+  #       dataspace-name: test-odp-dataspace
+  #       schema-sets:
+  #         - schema-set-name: &schema-set-name test-odp-schema-set
+  #           schema-set-file: samples/cps-bookstore.yang
+  #       anchors:
+  #         - anchor-name: test-odp-anchor
+  #           schema-set-name: *schema-set-name
+  # cps-schema-sets:
+  #   - cps-schema-set:
+  #       schema-set-name: test-odp-schemaset
+  #       dataspace-name: test-odp-dataspace
+  #       schema-set-file: samples/cps-bookstore.yang
+  # cps-anchors:
+  #   - cps-anchor:
+  #       anchor-name: test-odp-anchor
+  #       schema-set-name: test-odp-schemaset
+  #       dataspace-name: test-odp-dataspace
+  cps-anchor-nodes:
+    - cps-anchor-node:
         anchor-name: test-odp-anchor
-        schema-set-name: test-odp-schemaset
         dataspace-name: test-odp-dataspace
+        node-data: '{"shops": {"bookstore": {"bookstore-name": "Chapters", "categories": [{"code": 1, "name": "SciFi", "books": {"book": [{"title": "2001: A Space Odyssey", "price": 5}, {"title": "Dune", "price": 5}]}}, {"code": 2, "name": "Kids", "books": {"book": [{"title": "Matilda"}]}}]}}}'
