@@ -755,3 +755,21 @@ properties:
               - schema-set-name
         required:
           - cps-anchor
+  cps-anchor-nodes:
+    type: array
+    items:
+      - type: object
+        properties:
+          cps-anchor-node:
+            type: object
+            properties:
+              anchor-name:
+                type: string
+              dataspace-name:
+                type: string
+              node-data:
+                type: string
+            required:
+              - node-data
+        required:
+          - cps-anchor-node
