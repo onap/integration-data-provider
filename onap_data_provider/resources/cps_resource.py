@@ -186,3 +186,27 @@ class DataspaceResource(Resource):
                                               anchor_data["anchor-name"])
             else:
                 logging.warning("Anchor %s already exists", anchor_data["anchor-name"])
+
+class AnchorNodeResource(DataspaceSubresource):
+    """Anchor node resource class
+
+    Creates CPS anchor node
+    """
+
+    def __init__(self, data: Dict[str, Any]) -> None:
+        """Initialize anchor resource"""
+        super().__init__(data)
+
+        self._anchor: Anchor = None
+
+    def create(self) -> None:
+        """Create anchor node.
+
+        Raises:
+            ValueError: Schema set doesn't exist
+
+        """
+        if not self.schema_set:
+            raise ValueError("Schema set %s does not exist, create it first", self.data["schema-set-name"])
+        if not self.anchor:
+            self._anchor.create_node(self.schema_set, self.data["anchor-name"])
