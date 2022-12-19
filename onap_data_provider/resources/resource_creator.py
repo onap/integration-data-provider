@@ -28,7 +28,7 @@ from .cloud_region_resource import CloudRegionResource
 from .complex_resource import ComplexResource
 from .customer_resource import CustomerResource
 from .data_dictionary_resource import DataDictionarySetResource
-from .cps_resource import AnchorResource, DataspaceResource, SchemaSetResource
+from .cps_resource import AnchorNodeResource, AnchorResource, DataspaceResource, SchemaSetResource
 from .line_of_business_resource import LineOfBusinessResource
 from .msb_k8s_definition import MsbK8SDefinitionResource
 from .owning_entity_resource import OwningEntityResource
@@ -163,15 +163,19 @@ class ResourceCreator(ABC):
         },
         "cps-dataspace": {
             VersionsEnum.V1_1: DataspaceResource,
-            VersionsEnum.V2_0: DataspaceResource
+            VersionsEnum.V2_0: DataspaceResource,
         },
         "cps-schema-set": {
             VersionsEnum.V1_1: SchemaSetResource,
-            VersionsEnum.V2_0: SchemaSetResource
+            VersionsEnum.V2_0: SchemaSetResource,
         },
         "cps-anchor": {
             VersionsEnum.V1_1: AnchorResource,
-            VersionsEnum.V2_0: AnchorResource
+            VersionsEnum.V2_0: AnchorResource,
+        },
+        "cps-anchor-node": {
+            VersionsEnum.V1_1: AnchorNodeResource,
+            VersionsEnum.V2_0: AnchorNodeResource
         }
     }
 
