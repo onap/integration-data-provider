@@ -20,3 +20,8 @@ resources:
         anchor-name: test-odp-anchor
         schema-set-name: test-odp-schemaset
         dataspace-name: test-odp-dataspace
+  cps-anchor-nodes:
+    - cps-anchor-node:
+        anchor-node-name: test-odp-anchor-node
+        schema-set-name: test-odp-schemaset
+        dataspace-name: test-odp-dataspace
