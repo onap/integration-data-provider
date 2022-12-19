@@ -13,12 +13,14 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 """
+from unittest import mock
+import unittest
 from unittest.mock import MagicMock, NonCallableMagicMock, patch, PropertyMock
-
 from onapsdk.exceptions import APIError, ResourceNotFound
 from pytest import raises
+import pytest
 
-from onap_data_provider.resources.cps_resource import AnchorResource, DataspaceResource, SchemaSetResource
+from onap_data_provider.resources.cps_resource import AnchorNodeResource, AnchorResource, DataspaceResource, SchemaSetResource
 
 
 DATASPACE_RESOURCE_DATA = {
@@ -40,7 +42,8 @@ DATASPACE_WITH_ANCHORS_DATA = {
     "anchors": [
         {
             "anchor-name": "test-anchor",
-            "schema-set-name": "test-schema-set"
+            "schema-set-name": "test-schema-set",
+            "anchor-node-name": "test-anchor-node"
         }
     ]
 }
@@ -54,7 +57,8 @@ SCHEMA_SET_DATA = {
 ANCHOR_DATA = {
     "anchor-name": "test-anchor",
     "dataspace-name": "test-dataspace",
-    "schema-set-name": "test-schema-set"
+    "schema-set-name": "test-schema-set",
+    "anchor-node-name": "test-anchor-node"
 }
 
 
@@ -162,3 +166,21 @@ def test_anchor_resource(mock_dataspace_property, mock_schema_set_property):
     ar.create()
     mock_dataspace_property.return_value.get_anchor.assert_called_once_with("test-anchor")
     mock_dataspace_property.return_value.create_anchor.assert_not_called()
+
+@patch('builtins.input', return_value='/path/to/something')
+@patch("onap_data_provider.resources.cps_resource.AnchorNodeResource.dataspace", new_callable=PropertyMock) 
+def test_anchor_node_resource(mock_dataspace_property, mock_schema_set_property):
+    ar = AnchorNodeResource(ANCHOR_DATA)
+
+    mock_schema_set_property.side_effect = ValueError
+    with raises(ValueError):
+        ar.create()
+
+    mock_schema_set_property.side_effect = OSError
+    with raises(OSError):
+        ar.create()
+
+    mock_schema_set_property.side_effect = None
+    mock_schema_set_property.return_value = MagicMock()
+    ar.create()
+    mock_dataspace_property.return_value.create_node.assert_not_called()
