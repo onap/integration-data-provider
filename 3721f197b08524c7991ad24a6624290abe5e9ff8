@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f88c8e4c_ece02ed1",
+        "filename": "onap_data_provider/resources/cps_resource.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-12-22T14:54:08Z",
+      "side": 1,
+      "message": "delete whitespace",
+      "revId": "3721f197b08524c7991ad24a6624290abe5e9ff8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49babae1_0523868a",
+        "filename": "onap_data_provider/resources/cps_resource.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-12-22T14:54:08Z",
+      "side": 1,
+      "message": "why? True is always True, why to check it?",
+      "revId": "3721f197b08524c7991ad24a6624290abe5e9ff8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec539645_95f8141e",
+        "filename": "onap_data_provider/resources/cps_resource.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-12-22T14:54:08Z",
+      "side": 1,
+      "message": "that variable is assigned to class?",
+      "revId": "3721f197b08524c7991ad24a6624290abe5e9ff8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c618555_10a266f1",
+        "filename": "onap_data_provider/resources/cps_resource.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-12-22T14:54:08Z",
+      "side": 1,
+      "message": "path fixed?",
+      "revId": "3721f197b08524c7991ad24a6624290abe5e9ff8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d2dc60_15ffcff6",
+        "filename": "tox.ini",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-12-22T14:54:08Z",
+      "side": 1,
+      "message": "cool +1",
+      "revId": "3721f197b08524c7991ad24a6624290abe5e9ff8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
