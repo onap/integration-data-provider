@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd5352c5_5b0dc9b1",
+        "filename": "requirements.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-12-22T14:49:56Z",
+      "side": 1,
+      "message": "fix the versions of requirements",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 16
+      },
+      "revId": "3935bbcb7ded6ed10c8c4032164cdab4ca6f1158",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
