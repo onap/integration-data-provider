@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f591d799_df21ad79",
+        "filename": "onap_data_provider/valid_schema.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2022-12-23T14:50:17Z",
+      "side": 1,
+      "message": "Remove that file, add some test or simply forget",
+      "revId": "3935bbcb7ded6ed10c8c4032164cdab4ca6f1158",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd5352c5_5b0dc9b1",
         "filename": "requirements.txt",
         "patchSetId": 8
