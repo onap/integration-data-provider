@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90d58417_798598ba",
+        "filename": "onap_data_provider/resources/cps_resource.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2023-01-20T10:18:55Z",
+      "side": 1,
+      "message": "Sorry, I could confuse you but looks like that can\u0027t be an empty. CPS returns then an error. Looks we need to require node-data from user",
+      "revId": "9d720c4cbd1f728de2f8d2945f57f63831b43b34",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36f685d3_32faa77c",
+        "filename": "samples/cps.yaml",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 6079
+      },
+      "writtenOn": "2023-01-20T10:18:55Z",
+      "side": 1,
+      "message": "as looks it\u0027s required to have a node-data on entity file please update the sample file as well",
+      "revId": "9d720c4cbd1f728de2f8d2945f57f63831b43b34",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
