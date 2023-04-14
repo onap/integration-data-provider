@@ -1,5 +1,3 @@
-from docs_conf.conf import *
-
 branch = 'latest'
 master_doc = 'index'
 
