@@ -19,7 +19,7 @@ import logging
 from typing import Any, Dict, Optional
 
 from onapsdk.exceptions import ResourceNotFound  # type: ignore
-from onapsdk.msb.k8s.definition import Definition  # type: ignore
+from onapsdk.k8s.definition import Definition  # type: ignore
 
 from .msb_k8s_profile import MsbK8SProfileResource
 from .resource import Resource

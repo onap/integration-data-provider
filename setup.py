@@ -22,7 +22,7 @@ with open("README.md", "r", encoding="utf-8") as readme:
 setuptools.setup(
     name="onap_data_provider",
     version="0.7.1",
-    author="Michal Jagiello <michal.jagiello@t-mobile.pl>, Piotr Stanior <piotr.stanior@t-mobile.pl>, Pawel Denst <pawel.denst@external.t-mobile.pl>", 
+    author="Michal Jagiello <michal.jagiello@t-mobile.pl>, Piotr Stanior <piotr.stanior@t-mobile.pl>, Pawel Denst <pawel.denst@external.t-mobile.pl>",
     description="Tool to provide data for ONAP instances",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -35,7 +35,7 @@ setuptools.setup(
             "onap-data-provider=onap_data_provider.data_provider:run",
         ]
     },
-    install_requires=["onapsdk==10.3.2", "PyYAML~=5.4.1", "jsonschema==4.4.0"],
+    install_requires=["onapsdk==10.4.3", "PyYAML~=5.4.1", "jsonschema==4.4.0"],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Programming Language :: Python",
