@@ -6,7 +6,7 @@ WORKDIR /opt/app/onap_data_provider/
 
 RUN python -m pip install -r requirements.txt --prefix=/opt/install
 
-FROM nexus3.onap.org:10001/onap/integration-python:10.0.0
+FROM nexus3.onap.org:10001/onap/integration-python:12.0.0
 
 COPY --from=builder --chown=onap:onap /opt/install /usr/local
 
