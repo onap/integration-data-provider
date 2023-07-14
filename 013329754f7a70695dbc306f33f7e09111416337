@@ -16,6 +16,41 @@
       "message": "recheck",
       "revId": "013329754f7a70695dbc306f33f7e09111416337",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f95cf0e2_8618ccd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6334
+      },
+      "writtenOn": "2023-07-14T09:27:11Z",
+      "side": 1,
+      "message": "pom.xml error is not related to changes",
+      "revId": "013329754f7a70695dbc306f33f7e09111416337",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aab81e9_2ee51c4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6334
+      },
+      "writtenOn": "2023-07-14T09:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a47e816_753d68b0",
+      "revId": "013329754f7a70695dbc306f33f7e09111416337",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
