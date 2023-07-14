@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6014bef8_acd9806a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7849
+      },
+      "writtenOn": "2023-07-14T11:47:02Z",
+      "side": 1,
+      "message": "Added pom.xml since docker-verify [is extracting the IMAGE_VERSION from pom.xml](https://gerrit.onap.org/r/gitweb?p\u003dci-management.git;a\u003dblob;f\u003dshell/docker-build.sh;h\u003d1cb71d3fff76ef1867592f0ae421b68cb5bc685b;hb\u003dHEAD#l7)",
+      "revId": "d68e3356ad568951068ec7f47cbbb9c1cdbbf2f3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
