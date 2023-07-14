@@ -33,6 +33,24 @@
       "message": "`invalid argument \"/onap/data-provider:\" for \"-t, --tag\" flag: invalid reference format` This error seems real, I\u0027m not sure if adding pom.xml was appropriate in this case. Please revert last change and wait for the build chain to be fixed (the pom.xml check is a global issue apparently)",
       "revId": "d68e3356ad568951068ec7f47cbbb9c1cdbbf2f3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d41f62b_3611ec8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7849
+      },
+      "writtenOn": "2023-07-14T20:34:21Z",
+      "side": 1,
+      "message": "Alright, I reverted the change",
+      "parentUuid": "7b469973_00485000",
+      "revId": "d68e3356ad568951068ec7f47cbbb9c1cdbbf2f3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
