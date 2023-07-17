@@ -33,6 +33,23 @@
       "message": "This repo does not have a pom.xml file, the job that is failing might not be suitable for your repo since the job expects a pom.xml file to be present.",
       "revId": "d23b0f3de73fffa5e248170775d466dc7d18519a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "021e65dc_1f5daf73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2023-07-17T20:15:03Z",
+      "side": 1,
+      "message": "Sorry, the template was actually ok to use. JJB was creating a confusion of docker-build.sh scripts and now the template is using the right one. \n\nHere is the actual error:\nhttps://jenkins.onap.org/job/integration-data-provider-docker-verify-master/131/console",
+      "revId": "d23b0f3de73fffa5e248170775d466dc7d18519a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
