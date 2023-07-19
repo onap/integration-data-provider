@@ -84,6 +84,23 @@
       "message": "Artifacts are not correctly created 😞",
       "revId": "d23b0f3de73fffa5e248170775d466dc7d18519a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73987f3c_1800861f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2023-07-19T16:51:34Z",
+      "side": 1,
+      "message": "you might want to check on the requirement.txt\nLooks like something is missing or there is a dependency issue. Because of that, docker is not able to perform the build part.",
+      "revId": "d23b0f3de73fffa5e248170775d466dc7d18519a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
