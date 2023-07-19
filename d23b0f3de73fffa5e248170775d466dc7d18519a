@@ -67,6 +67,23 @@
       "message": "recheck",
       "revId": "d23b0f3de73fffa5e248170775d466dc7d18519a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a980d8_2ad1326f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6334
+      },
+      "writtenOn": "2023-07-19T12:23:01Z",
+      "side": 1,
+      "message": "Artifacts are not correctly created 😞",
+      "revId": "d23b0f3de73fffa5e248170775d466dc7d18519a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
