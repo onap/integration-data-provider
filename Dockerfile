@@ -1,4 +1,4 @@
-FROM python:3.10.4-slim AS builder
+FROM python:3.11.4-slim AS builder
 
 COPY requirements.txt /opt/app/onap_data_provider/requirements.txt
 
