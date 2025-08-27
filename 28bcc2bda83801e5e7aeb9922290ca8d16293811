@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Verified+1: ONAP Bypass GHA <releng+onap.bypass.gha@linuxfoundation.org>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Code-Review+2: Marek Szwa?kiewicz <marek.szwalkiewicz@external.t-mobile.pl>
+Submitted-by: Marek Szwa?kiewicz <marek.szwalkiewicz@external.t-mobile.pl>
+Submitted-at: Wed, 27 Aug 2025 07:17:29 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/integration/data-provider/+/141729
+Project: integration/data-provider
+Branch: refs/heads/master
